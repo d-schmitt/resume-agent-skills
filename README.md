@@ -1,6 +1,6 @@
 # Resume Builder — AI Agent + Skills Package
 
-Build a tailored, ATS-friendly CV for any job description using your LinkedIn profile or existing resume. Powered by modular AI skills that work with VS Code Copilot, Claude Code, or any AI tool that reads markdown instructions.
+Build a tailored, ATS-friendly CV for any job description using your LinkedIn profile or existing resume. Powered by modular AI skills that work with GitHub Copilot, Claude Code, or any AI tool that can work with agents.md and skills.md.
 
 ## What It Does
 
@@ -13,8 +13,8 @@ Build a tailored, ATS-friendly CV for any job description using your LinkedIn pr
 ## Quick Start
 
 ### Prerequisites
-- Python 3.9+
-- An AI tool that supports custom agents/skills (VS Code Copilot, Claude Code, etc.)
+- Python 3.13.7
+- An AI tool that supports custom agents/skills (GitHub Copilot, Claude Code, etc.)
 
 ### Install Dependencies
 ```bash
@@ -137,7 +137,6 @@ This generates a DOCX from fictional test data and compares its formatting again
 
 - **Cover letter generation** — reuses profile-extraction and job-analysis skills
 - **Multi-language support** — CV generation in German, French, etc.
-- **Two-column layout** — alternative to single-column (not ATS-friendly, but visually appealing)
 - **Interview preparation** — skill that uses job analysis to generate prep questions
 
 ## License
