@@ -4,44 +4,44 @@ This shows the expected structure and content style produced by the resume-build
 
 ---
 
-**Lukas Brenner**
-Berlin, Germany  ·  lukas.brenner@email.com  ·  linkedin.com/in/lukasbrenner  ·  github.com/lukasbrenner
-German (native)  ·  English (full professional proficiency)
+**Maria Chen**
+Munich, Germany  ·  maria.chen@email.com  ·  linkedin.com/in/mariachen  ·  github.com/mariachen
+English (native)  ·  German (professional working proficiency)
 
 ---
 
 ## PROFESSIONAL SUMMARY
 
-Software engineer with 6+ years of experience designing cloud-native platforms and microservice architectures. Delivered observability tooling adopted by 3 product teams and reduced mean time to recovery by 40% through automated incident-response pipelines. Combines hands-on Python and Kubernetes expertise with a passion for developer productivity and cross-team knowledge sharing.
+Full-stack software engineer with 6+ years of experience building scalable web applications and leading cross-functional teams. Proven track record of delivering cloud-native platforms processing 2M+ daily transactions, reducing infrastructure costs by 35% through containerization and CI/CD automation. Passionate about developer experience, mentoring junior engineers, and driving engineering best practices.
 
 ---
 
 ## KEY SKILLS
 
-Cloud-Native Architecture, Microservices, Platform Engineering, CI/CD Pipeline Design, Observability, Agile/Scrum, Technical Mentoring, Stakeholder Communication
+Cloud Architecture, Full-Stack Development, Team Leadership, CI/CD Pipeline Design, Microservices, Agile/Scrum, Stakeholder Communication, Technical Mentoring
 
 ---
 
 ## TECHNICAL SKILLS
 
-**Languages:** Python, TypeScript, Go, SQL
-**Frameworks & Libraries:** FastAPI, React, Next.js, Celery
-**Cloud & DevOps:** AWS (EKS, Lambda, RDS, S3), Docker, Kubernetes, Terraform, GitHub Actions
-**Databases:** PostgreSQL, Redis, Elasticsearch
-**Methodologies:** Scrum, Kanban, TDD, Site Reliability Engineering
+**Languages:** TypeScript, Python, Go, SQL, HTML/CSS
+**Frameworks:** React, Next.js, FastAPI, Express.js
+**Cloud & DevOps:** AWS (ECS, Lambda, RDS, S3), Docker, Kubernetes, Terraform, GitHub Actions
+**Databases:** PostgreSQL, Redis, DynamoDB
+**Methodologies:** Scrum, Kanban, TDD, Domain-Driven Design
 
 ---
 
 ## PROFESSIONAL EXPERIENCE
 
 **Senior Software Engineer**
-CloudNova GmbH  |  Berlin, Germany  |  Mar 2022 – Present
+TechCorp GmbH  |  Munich, Germany  |  Mar 2022 – Present
 
-- Architected an observability platform using Prometheus, Grafana, and custom Python exporters, adopted by 3 product teams and reducing mean time to recovery by 40%.
-- Led migration of 12 services from EC2 to Kubernetes (EKS), achieving 99.95% uptime and cutting infrastructure costs by 25%.
-- Designed event-driven data pipeline with Kafka and AWS Lambda processing 500K+ daily events for real-time anomaly detection.
-- Mentored 4 junior engineers through weekly code reviews and pair programming, reducing average onboarding time by 35%.
-- Introduced Terraform modules shared across 3 environments, eliminating manual provisioning and enabling zero-downtime deployments.
+- Led the migration of a monolithic Rails application to a microservices architecture on AWS ECS, reducing average response time from 800ms to 120ms and improving system uptime to 99.95%.
+- Designed and implemented a real-time event processing pipeline using Kafka and Lambda, handling 2M+ daily events with sub-second latency.
+- Mentored a team of 4 junior engineers through weekly code reviews and pair programming sessions, resulting in 40% faster onboarding.
+- Championed adoption of Terraform for infrastructure-as-code, managing 50+ AWS resources across 3 environments with zero-downtime deployments.
+- Established engineering RFC process adopted by 3 teams, improving cross-team alignment on architectural decisions.
 
 **Software Engineer**
 StartupXYZ  |  Berlin, Germany  |  Jun 2019 – Feb 2022
@@ -79,7 +79,7 @@ Humboldt University of Berlin  |  2012 – 2015
 
 ---
 
-## OPEN SOURCE CONTRIBUTIONS, PATENTS & PUBLICATIONS
+## PUBLICATIONS & OPEN SOURCE
 
 - Core contributor to FastAPI — authored async middleware refactor merged in v0.100, reducing average response latency by 12%.
 - Co-inventor on patent DE 10 2023 001 234 — "Method for Real-Time Anomaly Detection in Container Orchestration Systems" (filed 2023).

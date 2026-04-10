@@ -29,10 +29,11 @@ Platforms & Tools: GitHub, AWS, Docker, Kubernetes
 Languages: Python, TypeScript, Go, SQL
 Cloud & DevOps: Terraform, GitHub Actions, EKS, Lambda
 Frameworks: FastAPI, React, Next.js, Celery
-Methodologies: Scrum, Kanban, TDD, SRE
+Methodologies: Scrum, Kanban, TDD, SRE  ← include only if JD mentions methodology requirements
 ```
 - Category name in **bold**, followed by the list
 - Order categories by relevance to the target job
+- **Methodologies** category is optional — include only when the job description explicitly lists methodology requirements (e.g., "Scrum experience required"). For most engineering roles, methodologies are assumed and add no signal.
 
 ### 5. Professional Experience
 For each role (reverse-chronological):
@@ -58,8 +59,8 @@ For each entry:
 [Optional: thesis topic, notable achievements]
 ```
 
-### 7. Open Source Contributions, Patents & Publications (Optional)
-Bulleted list. Include only if the profile contains open-source contributions, patent filings, or academic publications.
+### 7. Publications & Open Source (Optional)
+Bulleted list. Include only if the profile contains patents, academic publications, or notable open-source contributions.
 
 ```
 • [Project/Patent/Paper title] — [brief context and impact]

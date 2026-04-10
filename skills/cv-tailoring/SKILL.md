@@ -40,6 +40,11 @@ Bad examples (too vague):
 - "Can you tell me more about your projects?"
 - "What metrics do you have?"
 
+Additional question rules:
+- If the profile flags an **employment gap** >6 months, ask how the candidate spent that time (upskilling, freelancing, sabbatical, personal reasons). Incorporate their answer naturally into the CV — e.g., as a brief note under the relevant date range or as context in the summary — rather than leaving the gap unexplained.
+- For **patents**, ask whether the patent was filed or granted, and whether it was commercialized or adopted. Filed-only patents are weaker evidence; include them only when relevant to the target role.
+- For **open-source contributions**, ask for specific PRs, issues, or maintainer roles to ensure claims are verifiable.
+
 **STOP here and present the questions to the user. Wait for their answers before proceeding.**
 
 ### Step 3: Write CV Content
@@ -52,7 +57,7 @@ After receiving user answers, write the complete CV in markdown using the struct
 4. Technical Skills (categorized)
 5. Professional Experience (reverse-chronological)
 6. Education
-7. Open Source Contributions, Patents & Publications (if evidence exists)
+7. Publications & Open Source (if evidence exists)
 8. Certifications
 9. Awards (if present)
 10. Community & Speaking (if evidence exists)
@@ -68,6 +73,9 @@ Examples:
 Rules:
 - Start every bullet with a **strong action verb** (Led, Built, Designed, Pioneered, Championed, Delivered, etc.)
 - Include **metrics** where the profile or user answers provide them
+- When stating a technical improvement, also state the **downstream business effect** if known (e.g., "reducing response time by 85%, which improved checkout conversion by 12%" rather than just "reducing response time by 85%")
+- If the user **cannot provide metrics**, use scope indicators instead: team size, user/customer count, number of services/systems, project duration, or budget range
+- Expand **acronyms on first mention** in the Professional Summary (e.g., "Kubernetes (K8s)", "CI/CD (Continuous Integration/Continuous Deployment)"); use the short form in bullets thereafter
 - Do NOT invent metrics or achievements
 - 3–7 bullets per role, ordered by relevance to the target job
 - Most relevant responsibilities first within each role

@@ -87,7 +87,7 @@ Parse the markdown CV content into a structured JSON format that the export scri
     },
     {
       "type": "bullets_section",
-      "heading": "OPEN SOURCE CONTRIBUTIONS, PATENTS & PUBLICATIONS",
+      "heading": "PUBLICATIONS & OPEN SOURCE",
       "bullets": ["Bullet 1", "Bullet 2"]
     }
   ]

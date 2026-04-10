@@ -74,6 +74,8 @@ Review the extracted data and flag:
 ### Step 4: Output
 Return the structured data in a clear, organized format using the categories above. Include a **"Data Quality Notes"** section at the end listing any gaps or ambiguities found.
 
+> **Note:** Data Quality Notes are internal working notes used only by the tailoring step to ask better clarifying questions. They never appear in the final CV.
+
 ## Constraints
 - Do NOT invent, embellish, or assume information not present in the source.
 - Do NOT discard information — include everything, even if it seems minor.

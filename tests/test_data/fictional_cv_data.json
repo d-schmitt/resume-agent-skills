@@ -1,38 +1,38 @@
 {
   "header": {
-    "name": "Lukas Brenner",
-    "contact_line": "Berlin, Germany  \u00b7  lukas.brenner@email.com  \u00b7  linkedin.com/in/lukasbrenner  \u00b7  github.com/lukasbrenner",
-    "languages": "German (native)  \u00b7  English (full professional proficiency)"
+    "name": "Maria Chen",
+    "contact_line": "Munich, Germany  \u00b7  maria.chen@email.com  \u00b7  linkedin.com/in/mariachen  \u00b7  github.com/mariachen",
+    "languages": "English (native)  \u00b7  German (professional working proficiency)"
   },
   "sections": [
     {
       "type": "summary",
       "heading": "PROFESSIONAL SUMMARY",
-      "body": "Software engineer with 6+ years of experience designing cloud-native platforms and microservice architectures. Delivered observability tooling adopted by 3 product teams and reduced mean time to recovery by 40% through automated incident-response pipelines. Combines hands-on Python and Kubernetes expertise with a passion for developer productivity and cross-team knowledge sharing."
+      "body": "Full-stack software engineer with 6+ years of experience building scalable web applications and leading cross-functional teams. Proven track record of delivering cloud-native platforms processing 2M+ daily transactions, reducing infrastructure costs by 35% through containerization and CI/CD automation. Passionate about developer experience, mentoring junior engineers, and driving engineering best practices at your company."
     },
     {
       "type": "skills_list",
       "heading": "KEY SKILLS",
       "items": [
-        "Cloud-Native Architecture",
-        "Microservices",
-        "Platform Engineering",
+        "Cloud Architecture",
+        "Full-Stack Development",
+        "Team Leadership",
         "CI/CD Pipeline Design",
-        "Observability",
+        "Microservices",
         "Agile/Scrum",
-        "Technical Mentoring",
-        "Stakeholder Communication"
+        "Stakeholder Communication",
+        "Technical Mentoring"
       ]
     },
     {
       "type": "technical_skills",
       "heading": "TECHNICAL SKILLS",
       "categories": [
-        {"label": "Languages", "value": "Python, TypeScript, Go, SQL"},
-        {"label": "Frameworks & Libraries", "value": "FastAPI, React, Next.js, Celery"},
-        {"label": "Cloud & DevOps", "value": "AWS (EKS, Lambda, RDS, S3), Docker, Kubernetes, Terraform, GitHub Actions"},
-        {"label": "Databases", "value": "PostgreSQL, Redis, Elasticsearch"},
-        {"label": "Methodologies", "value": "Scrum, Kanban, TDD, Site Reliability Engineering"}
+        {"label": "Languages", "value": "TypeScript, Python, Go, SQL, HTML/CSS"},
+        {"label": "Frameworks", "value": "React, Next.js, FastAPI, Express.js"},
+        {"label": "Cloud & DevOps", "value": "AWS (ECS, Lambda, RDS, S3), Docker, Kubernetes, Terraform, GitHub Actions"},
+        {"label": "Databases", "value": "PostgreSQL, Redis, DynamoDB"},
+        {"label": "Methodologies", "value": "Scrum, Kanban, TDD, Domain-Driven Design"}
       ]
     },
     {
@@ -41,13 +41,13 @@
       "roles": [
         {
           "title": "Senior Software Engineer",
-          "company_line": "CloudNova GmbH  |  Berlin, Germany  |  Mar 2022 \u2013 Present",
+          "company_line": "TechCorp GmbH  |  Munich, Germany  |  Mar 2022 \u2013 Present",
           "bullets": [
-            "Architected an observability platform using Prometheus, Grafana, and custom Python exporters, adopted by 3 product teams and reducing mean time to recovery by 40%.",
-            "Led migration of 12 services from EC2 to Kubernetes (EKS), achieving 99.95% uptime and cutting infrastructure costs by 25%.",
-            "Designed event-driven data pipeline with Kafka and AWS Lambda processing 500K+ daily events for real-time anomaly detection.",
-            "Mentored 4 junior engineers through weekly code reviews and pair programming, reducing average onboarding time by 35%.",
-            "Introduced Terraform modules shared across 3 environments, eliminating manual provisioning and enabling zero-downtime deployments."
+            "Led the migration of a monolithic Rails application to a microservices architecture on AWS ECS, reducing average response time from 800ms to 120ms and improving system uptime to 99.95%.",
+            "Designed and implemented a real-time event processing pipeline using Kafka and Lambda, handling 2M+ daily events with sub-second latency.",
+            "Mentored a team of 4 junior engineers through weekly code reviews and pair programming sessions, resulting in 40% faster onboarding.",
+            "Championed adoption of Terraform for infrastructure-as-code, managing 50+ AWS resources across 3 environments with zero-downtime deployments.",
+            "Established engineering RFC process adopted by 3 teams, improving cross-team alignment on architectural decisions."
           ]
         },
         {
@@ -98,7 +98,7 @@
     },
     {
       "type": "bullets_section",
-      "heading": "OPEN SOURCE CONTRIBUTIONS, PATENTS & PUBLICATIONS",
+      "heading": "PUBLICATIONS & OPEN SOURCE",
       "bullets": [
         "Core contributor to FastAPI — authored async middleware refactor merged in v0.100, reducing average response latency by 12%.",
         "Co-inventor on patent DE 10 2023 001 234 — \"Method for Real-Time Anomaly Detection in Container Orchestration Systems\" (filed 2023)."
