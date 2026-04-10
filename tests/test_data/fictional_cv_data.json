@@ -1,0 +1,117 @@
+{
+  "header": {
+    "name": "Lukas Brenner",
+    "contact_line": "Berlin, Germany  \u00b7  lukas.brenner@email.com  \u00b7  linkedin.com/in/lukasbrenner  \u00b7  github.com/lukasbrenner",
+    "languages": "German (native)  \u00b7  English (full professional proficiency)"
+  },
+  "sections": [
+    {
+      "type": "summary",
+      "heading": "PROFESSIONAL SUMMARY",
+      "body": "Software engineer with 6+ years of experience designing cloud-native platforms and microservice architectures. Delivered observability tooling adopted by 3 product teams and reduced mean time to recovery by 40% through automated incident-response pipelines. Combines hands-on Python and Kubernetes expertise with a passion for developer productivity and cross-team knowledge sharing."
+    },
+    {
+      "type": "skills_list",
+      "heading": "KEY SKILLS",
+      "items": [
+        "Cloud-Native Architecture",
+        "Microservices",
+        "Platform Engineering",
+        "CI/CD Pipeline Design",
+        "Observability",
+        "Agile/Scrum",
+        "Technical Mentoring",
+        "Stakeholder Communication"
+      ]
+    },
+    {
+      "type": "technical_skills",
+      "heading": "TECHNICAL SKILLS",
+      "categories": [
+        {"label": "Languages", "value": "Python, TypeScript, Go, SQL"},
+        {"label": "Frameworks & Libraries", "value": "FastAPI, React, Next.js, Celery"},
+        {"label": "Cloud & DevOps", "value": "AWS (EKS, Lambda, RDS, S3), Docker, Kubernetes, Terraform, GitHub Actions"},
+        {"label": "Databases", "value": "PostgreSQL, Redis, Elasticsearch"},
+        {"label": "Methodologies", "value": "Scrum, Kanban, TDD, Site Reliability Engineering"}
+      ]
+    },
+    {
+      "type": "experience",
+      "heading": "PROFESSIONAL EXPERIENCE",
+      "roles": [
+        {
+          "title": "Senior Software Engineer",
+          "company_line": "CloudNova GmbH  |  Berlin, Germany  |  Mar 2022 \u2013 Present",
+          "bullets": [
+            "Architected an observability platform using Prometheus, Grafana, and custom Python exporters, adopted by 3 product teams and reducing mean time to recovery by 40%.",
+            "Led migration of 12 services from EC2 to Kubernetes (EKS), achieving 99.95% uptime and cutting infrastructure costs by 25%.",
+            "Designed event-driven data pipeline with Kafka and AWS Lambda processing 500K+ daily events for real-time anomaly detection.",
+            "Mentored 4 junior engineers through weekly code reviews and pair programming, reducing average onboarding time by 35%.",
+            "Introduced Terraform modules shared across 3 environments, eliminating manual provisioning and enabling zero-downtime deployments."
+          ]
+        },
+        {
+          "title": "Software Engineer",
+          "company_line": "StartupXYZ  |  Berlin, Germany  |  Jun 2019 \u2013 Feb 2022",
+          "bullets": [
+            "Built the customer-facing dashboard using React and Next.js, serving 10K+ monthly active users with 98% Lighthouse performance score.",
+            "Implemented automated CI/CD pipeline with GitHub Actions, reducing deployment time from 45 minutes to 8 minutes.",
+            "Developed RESTful APIs in Python/FastAPI for payment processing integration, handling \u20ac5M+ in monthly transactions.",
+            "Introduced automated testing practices (unit + integration), increasing code coverage from 30% to 85%."
+          ]
+        },
+        {
+          "title": "Junior Developer",
+          "company_line": "AgencyWorks  |  Berlin, Germany  |  Sep 2017 \u2013 May 2019",
+          "bullets": [
+            "Developed responsive web applications for 12+ client projects using React and Node.js.",
+            "Created reusable component library that reduced development time by 25% across projects.",
+            "Collaborated with UX designers to implement accessible interfaces meeting WCAG 2.1 AA standards."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "education",
+      "heading": "EDUCATION",
+      "entries": [
+        {
+          "title": "M.Sc. Computer Science",
+          "subtitle": "Technical University of Munich  |  2015 \u2013 2017",
+          "detail": "Thesis: Optimizing container orchestration scheduling using reinforcement learning"
+        },
+        {
+          "title": "B.Sc. Software Engineering",
+          "subtitle": "Humboldt University of Berlin  |  2012 \u2013 2015",
+          "detail": null
+        }
+      ]
+    },
+    {
+      "type": "certifications",
+      "heading": "CERTIFICATIONS",
+      "items": [
+        {"name": "AWS Solutions Architect \u2013 Associate", "detail": " \u2014 Amazon Web Services (Mar 2023)"},
+        {"name": "Certified Kubernetes Administrator (CKA)", "detail": " \u2014 CNCF (Nov 2022)"},
+        {"name": "Professional Scrum Master I (PSM I)", "detail": " \u2014 Scrum.org (Jun 2021)"}
+      ]
+    },
+    {
+      "type": "bullets_section",
+      "heading": "OPEN SOURCE CONTRIBUTIONS, PATENTS & PUBLICATIONS",
+      "bullets": [
+        "Core contributor to FastAPI — authored async middleware refactor merged in v0.100, reducing average response latency by 12%.",
+        "Co-inventor on patent DE 10 2023 001 234 — \"Method for Real-Time Anomaly Detection in Container Orchestration Systems\" (filed 2023)."
+      ]
+    },
+    {
+      "type": "bullets_section",
+      "heading": "COMMUNITY & SPEAKING",
+      "bullets": [
+        "Speaker at Berlin JS Meetup on \"Migrating to Microservices Without Losing Your Sanity\" (2023).",
+        "Open-source contributor to FastAPI and Terraform AWS provider.",
+        "Mentor at ReDI School of Digital Integration, teaching web development to refugees (2020 \u2013 present)."
+      ]
+    }
+  ]
+}
