@@ -1,6 +1,6 @@
 # Resume Builder — AI Agent + Skills Package
 
-Build a tailored, ATS-friendly CV for any job description using your LinkedIn profile or existing resume. Powered by modular AI skills that work with GitHub Copilot, Claude Code, or any AI tool that can work with agents.md and skills.md.
+Build a tailored, ATS-friendly CV for any job description using your LinkedIn profile or existing resume. Powered by modular AI skills that work with GitHub Copilot, Claude Code, Perplexity, Langdock, or any AI tool that supports custom instructions.
 
 ## What It Does
 
@@ -14,7 +14,7 @@ Build a tailored, ATS-friendly CV for any job description using your LinkedIn pr
 
 ### Prerequisites
 - Python 3.13.7
-- An AI tool that supports custom agents/skills (GitHub Copilot, Claude Code, etc.)
+- An AI tool that supports custom agents/skills (GitHub Copilot, Claude Code, Perplexity, Langdock, etc.)
 
 ### Install Dependencies
 ```bash
@@ -57,6 +57,57 @@ Use the repository as-is. Point your AI tool to:
 - `resume-builder.agent.md` as the main instructions
 - `skills/*/SKILL.md` as the skill definitions
 - `skills/cv-export/scripts/` for the export pipeline
+
+### Perplexity (Spaces + Computer)
+Perplexity doesn't support agent/skill files natively, but you can replicate the full workflow — including DOCX and PDF generation — using a **Space** with custom instructions and **Computer mode** for file export.
+
+**Step 1: Create and configure the Space**
+1. Go to **Spaces** in the left sidebar → **Create new Space**
+2. Open the Space settings and paste the contents of `resume-builder.agent.md` into the **Custom AI Instructions** field
+3. Upload the following files to the Space as knowledge:
+   - `skills/profile-extraction/SKILL.md`
+   - `skills/job-analysis/SKILL.md`
+   - `skills/cv-tailoring/SKILL.md`
+   - `skills/cv-tailoring/references/cv-structure.md`
+   - `skills/cv-export/SKILL.md`
+   - `skills/cv-export/scripts/export_docx.py`
+   - `skills/cv-export/scripts/export_pdf.py`
+   - `skills/cv-export/scripts/requirements.txt`
+   - `examples/sample-output.md`
+
+**Step 2: Run the CV workflow**
+1. Start a new Thread in the Space and provide your LinkedIn profile + job description
+2. Work through the profile extraction, job analysis, gap analysis, and clarifying questions steps in the thread
+
+**Step 3: Export to DOCX and PDF using Computer mode**
+1. Switch to **Computer** mode in Perplexity
+2. Ask it to export your CV, for example:
+   > *"Please export the CV we just built to DOCX and PDF. Use the export scripts from the knowledge files. Install Python and any required packages if they are not already available."*
+3. Computer mode will take care of the rest — it can install Python if needed, install `python-docx` via pip, run `export_docx.py` to generate the DOCX, and produce a PDF using whichever tool it finds available (Microsoft Word, LibreOffice, or an online converter)
+
+### Langdock (Agents)
+Langdock supports custom agents with instructions, knowledge files, and multi-agent delegation.
+
+**Option A — Single agent (simplest):**
+1. Go to **Agents** → **Create Agent**
+2. Set name to `Resume Builder` and add a short description
+3. Paste the full contents of `resume-builder.agent.md` into the **Instructions** field (up to 40,000 characters — append the contents of each `SKILL.md` and `cv-structure.md` into the same instructions block)
+4. Under **Knowledge**, upload:
+   - `examples/sample-output.md`
+   - `skills/cv-export/SKILL.md` (so the agent knows the exact JSON schema to produce)
+   - `skills/cv-export/scripts/export_docx.py`
+   - `skills/cv-export/scripts/export_pdf.py`
+   - `skills/cv-export/scripts/requirements.txt`
+5. Under **Actions → Capabilities**, enable **Data Analysis** (lets the agent run the Python export scripts)
+6. Set **Creativity** slider to low (0.2–0.3) for consistent, professional output
+7. Optionally add **Conversation Starters** like: *"Build a CV from my LinkedIn profile for this job description"*
+
+**Option B — Multi-agent (advanced):**
+Create separate agents for each skill (profile-extraction, job-analysis, cv-tailoring, cv-export) with their respective `SKILL.md` as instructions. Then create an orchestrator agent using `resume-builder.agent.md` and attach the skill agents via **Actions → Other Agents** for delegation.
+
+> **DOCX/PDF export:** With Data Analysis enabled, the agent can run the Python export scripts directly. The scripts require `python-docx` — if the sandbox doesn't have it pre-installed, add a line to the agent instructions telling it to run `pip install python-docx` before executing the export. PDF conversion via `docx2pdf` requires Microsoft Word, which won't be available in the sandbox; the agent will produce the DOCX and you can convert to PDF locally if needed.
+
+> **Tip:** If your Langdock workspace has the Slack or Teams integration, you can chat with the Resume Builder agent directly from Slack or Microsoft Teams.
 
 ### Single-File Use
 If your tool doesn't support the skills folder structure, you can use `resume-builder.agent.md` on its own — it contains the full workflow and references to the skill files. The AI will read the skill files as needed.
