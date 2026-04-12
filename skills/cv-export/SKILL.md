@@ -98,7 +98,7 @@ Parse the markdown CV content into a structured JSON format that the export scri
 Write the structured JSON to a temporary file (e.g., `cv_data.json`) in the current working directory.
 
 ### Step 3: Content Integrity Check
-Before generating files, check the JSON for content-level issues that the export scripts cannot correct. ATS-safe layout (single-column, standard font, no images or text boxes) is hardcoded in the export scripts and guaranteed when they exit successfully — it is not affected by what is in the JSON fields. What can go wrong in the content fields:
+Before generating files, check the JSON for content-level issues that the export scripts cannot correct. What can go wrong in the content fields:
 
 - [ ] No HTML tags in any text field (e.g., `<b>`, `<br>`, `&amp;`)
 - [ ] No emoji or decorative characters in section headings
@@ -107,8 +107,6 @@ Before generating files, check the JSON for content-level issues that the export
 - [ ] No single bullet is a multi-sentence paragraph that should be split into separate bullets
 
 If any check fails, correct the JSON before proceeding.
-
-> **Layout parseability is guaranteed by the export scripts, not the JSON.** If both scripts exit with code 0, the output files are ATS-safe by construction. The cv-tailoring ATS score measures content quality — it is meaningful as long as the export succeeds.
 
 ### Step 4: Generate DOCX
 Run the export script:

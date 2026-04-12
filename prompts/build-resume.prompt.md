@@ -1,7 +1,7 @@
 ---
-description: "Quick-start: build a tailored CV/resume for a specific job from your LinkedIn PDF export or existing CV file"
+description: "Quick-start: build a tailored CV/resume for a specific job from your LinkedIn or existing CV"
 agent: "resume-builder"
-argument-hint: "Attach your LinkedIn PDF export or CV file, and provide the job description URL or text"
+argument-hint: "Attach your LinkedIn URL or PDF export or CV file, and provide the job description URL or text"
 tools: [web, read, edit, execute, search]
 ---
 
