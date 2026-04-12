@@ -121,6 +121,12 @@ Review the extracted data and flag issues. Tailor the flags based on the detecte
 
 Based on the flags above, generate a focused set of questions to fill the gaps. Group by topic and keep them specific — reference exact roles, companies, and dates from the extracted data. Aim for 3–8 questions total.
 
+**For all inputs — always ask (achievement mining):**
+Women frequently have impactful work they don’t think of as CV-worthy. Ask 2–3 of these regardless of input type to surface it:
+- "What’s an accomplishment you’re proud of that might not be obvious from your CV or LinkedIn — something a colleague or manager praised, or where you saw a real difference?"
+- "What do colleagues or your manager most often come to you for? What are you the go-to person for?"
+- "Is there a project, initiative, or change you drove that had a clear before/after — even if you don’t have hard numbers for it?"
+
 **For LinkedIn PDF inputs — always ask:**
 - What is your email address?
 - Do you have a GitHub profile, portfolio site, or other relevant URL to include?

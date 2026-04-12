@@ -28,6 +28,18 @@ Compare the profile data against the job analysis. For each job requirement, ass
 
 Produce a summary table of matches.
 
+#### Keyword Coverage
+Count how many of the ATS keywords (from the job analysis) appear anywhere in the candidate's profile:
+
+| Coverage | Tailoring level | Effort |
+|---|---|---|
+| ≥80% | Light — reorder and surface existing content | ~15 min |
+| 60–79% | Medium — rewrite summary, expand matching bullets | ~30 min |
+| 50–65% | Aggressive — complete summary rewrite, restructure skills | ~60 min |
+| <50% | Significant gap — flag clearly; discuss with user before proceeding | — |
+
+Include the coverage percentage and tailoring level in the gap analysis output.
+
 ### Step 2: Clarifying Questions
 For each **weak/missing** or **partial match** area that is rated **Critical** or **Important** in the job analysis, generate 3–7 targeted questions.
 
@@ -39,6 +51,14 @@ Questions must be **specific**, not generic. Good examples:
 Bad examples (too vague):
 - "Can you tell me more about your projects?"
 - "What metrics do you have?"
+
+When a user says they don't have specific numbers, don't accept the vague answer. Use qualitative proxy probes to surface impact:
+- "What did your manager or team say about the outcome? Any specific feedback you remember?"
+- "How did things change for the people you worked with after you delivered this?"
+- "What would have happened if this work hadn't been done, or had taken twice as long?"
+- "How many people or teams were affected by it — even a rough order of magnitude helps."
+
+These answers can be shaped into impact statements without fabricating numbers.
 
 Additional question rules:
 - If the profile flags an **employment gap** >6 months, ask how the candidate spent that time (upskilling, freelancing, sabbatical, personal reasons). Incorporate their answer naturally into the CV — e.g., as a brief note under the relevant date range or as context in the summary — rather than leaving the gap unexplained.
@@ -77,6 +97,14 @@ Rules:
 - If the user **cannot provide metrics**, use scope indicators instead: team size, user/customer count, number of services/systems, project duration, or budget range
 - Expand **acronyms on first mention** in the Professional Summary (e.g., "Kubernetes (K8s)", "CI/CD (Continuous Integration/Continuous Deployment)"); use the short form in bullets thereafter
 - Do NOT invent metrics or achievements
+- **Anti-pattern — Responsibilities Without Outcomes**: Listing duties instead of impact is the most common CV weakness. If a bullet only describes what the person was responsible for, rewrite it to show what changed as a result.
+
+  | ✗ Duty-only | ✓ With outcome |
+  |---|---|
+  | "Managed a team of engineers" | "Led a team of 5 engineers to deliver a payment integration on time, reducing checkout abandonment by 12%" |
+  | "Responsible for onboarding new hires" | "Designed onboarding programme for 8 new joiners, cutting time-to-productivity from 6 weeks to 3" |
+  | "Worked on data pipeline reliability" | "Refactored ETL pipeline, reducing failure rate from 15% to <1% and eliminating weekly manual intervention" |
+
 - 3–7 bullets per role, ordered by relevance to the target job
 - Most relevant responsibilities first within each role
 
@@ -87,7 +115,52 @@ Rules:
 - **Omit** only if a section would be empty or the content is truly irrelevant
 - Use **ATS keywords** from the job analysis naturally in bullets and skills sections
 
-### Step 4: Profile Advice
+### Step 4: ATS Score
+After writing the CV, calculate a content-based ATS score (0–100). **Parseability** (layout, fonts, no images) is a binary gate handled by the cv-export skill and guaranteed by its fixed output format — it is not scored here. This score measures only what can be evaluated from the CV text.
+
+| Category | Points | What it measures |
+|---|---|---|
+| Keyword coverage | 40 | How many Critical + Important job analysis keywords appear in the CV, and where |
+| Role & level fit | 25 | How well the candidate's seniority, domain, and experience years match the target role |
+| Content quality | 35 | Outcomes vs. duties, metrics or scope indicators, action verbs, no generic filler |
+
+**Target: 80+ / 100**
+
+#### Scoring Checklist
+
+**Keyword Coverage (40 pts):**
+Count how many of the Critical + Important keywords from the job analysis appear in the CV (Professional Summary, Skills sections, or bullet points). Calculate the coverage percentage:
+- 80%+ present AND at least half in Summary or Skills = 40 pts
+- 80%+ present but mostly buried in older roles = 32 pts
+- 60–79% present = 24 pts
+- 40–59% present = 16 pts
+- <40% present = 8 pts
+
+**Role & Level Fit (25 pts):**
+- [ ] Job title or a closely matching equivalent appears in at least one recent role
+- [ ] Candidate's years of experience meets, or is within 2 years of, the stated requirement
+- [ ] Industry or domain matches, or a transferable domain is explicitly reframed for the target role
+- [ ] Seniority of responsibilities matches the target level (not applying for senior roles with only junior-level bullets)
+- ✓ All 4 checks = 25 pts | 1 fails = 18 pts | 2 fail = 12 pts | 3+ fail = 5 pts
+
+**Content Quality (35 pts):**
+- [ ] At least 5 bullets have quantifiable metrics (numbers, %, time saved) OR clear scope indicators (team size, user count, systems affected, budget)
+- [ ] Every bullet starts with a strong action verb (Led, Built, Delivered, Designed, etc.)
+- [ ] No generic filler language ("team player", "passionate about", "hardworking" without evidence)
+- [ ] Professional Summary opens with role identity + years of experience + a specific achievement or metric
+- [ ] Bullets for the 2 most recent roles emphasize outcomes, not just responsibilities
+- ✓ All 5 checks = 35 pts | 1 fails = 28 pts | 2 fail = 21 pts | 3+ fail = 12 pts
+
+Present the score in this format:
+```
+ATS Score: [X]/100
+• Keyword coverage:  [n]/40
+• Role & level fit:  [n]/25
+• Content quality:   [n]/35
+```
+For any category scoring below 70% of its maximum, give one specific actionable fix.
+
+### Step 5: Profile Advice
 After the CV content, generate a **"Strengthening Advice"** section with 5–7 bullets:
 - Additional metrics the user could add
 - Projects worth highlighting more prominently
@@ -95,10 +168,11 @@ After the CV content, generate a **"Strengthening Advice"** section with 5–7 b
 - Certifications that would strengthen the application
 - Gaps that could be addressed in a cover letter
 
-### Step 5: Output
+### Step 6: Output
 Return:
 1. The complete CV content in markdown (ready for the `cv-export` skill)
-2. The Strengthening Advice section
+2. The ATS Score with per-category breakdown and any specific fixes
+3. The Strengthening Advice section
 
 ## Constraints
 - Stay **fully truthful** — rephrase and reorganize, but never fabricate

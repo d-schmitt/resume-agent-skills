@@ -73,7 +73,8 @@ Use the `cv-export` skill to produce formatted documents.
 ### Step 6: Deliver
 Present the user with:
 1. The generated **DOCX** and **PDF** files
-2. The **Strengthening Advice** (5–7 bullets on how to further improve)
+2. The **ATS Score** (0–100) with per-category breakdown and any specific fixes
+3. The **Strengthening Advice** (5–7 bullets on how to further improve)
 
 ## Constraints
 - **Never fabricate** experience, achievements, or metrics not present in the user's profile or clarification answers
