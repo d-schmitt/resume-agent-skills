@@ -28,6 +28,7 @@ If no input is provided, ask the user for the job description.
 - Seniority level (entry / mid / senior / lead / principal)
 - Department or team (if mentioned)
 - Employment type (full-time, part-time, contract)
+- **Language of the job description** (e.g., English, German, French) — detect from the posting text
 
 ### Step 3: Extract Requirements
 Categorize every requirement into one of these groups:
@@ -68,7 +69,7 @@ Rate each extracted requirement:
 - **Nice-to-have** — Listed as preferred or bonus
 
 ### Step 6: Output
-Return the structured analysis using the categories above. End with a **"Tailoring Recommendations"** section: 3–5 bullet points advising which aspects of a candidate's profile should be emphasized most.
+Return the structured analysis using the categories above. Include the **detected language** of the job description prominently in the metadata block — this is used by the orchestrator to determine whether to prompt for CV output language. End with a **"Tailoring Recommendations"** section: 3–5 bullet points advising which aspects of a candidate's profile should be emphasized most.
 
 ## Constraints
 - Do NOT add requirements that are not in the job description.

@@ -109,3 +109,20 @@ Always prefer quantified impact:
 - **1 page**: Early career (0–5 years), 2–3 roles
 - **2 pages**: Mid-senior career (5+ years), 3+ roles
 - Never exceed 2 pages
+
+## Section Headings by Language
+Use these translated headings when the CV output language is not English. All other layout and structure rules remain the same.
+
+| Section | English | German |
+|---|---|---|
+| Professional Summary | PROFESSIONAL SUMMARY | BERUFLICHES PROFIL |
+| Key Skills | KEY SKILLS | KERNKOMPETENZEN |
+| Technical Skills | TECHNICAL SKILLS | TECHNISCHE KENNTNISSE |
+| Professional Experience | PROFESSIONAL EXPERIENCE | BERUFSERFAHRUNG |
+| Education | EDUCATION | AUSBILDUNG |
+| Certifications | CERTIFICATIONS | ZERTIFIZIERUNGEN |
+| Awards | AWARDS | AUSZEICHNUNGEN |
+| Publications & Open Source | PUBLICATIONS & OPEN SOURCE | PUBLIKATIONEN & OPEN SOURCE |
+| Community & Speaking | COMMUNITY & SPEAKING | EHRENAMT & VORTRÄGE |
+
+To add another language, extend this table.
