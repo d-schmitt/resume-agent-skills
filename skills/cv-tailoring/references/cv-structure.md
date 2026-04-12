@@ -120,7 +120,7 @@ Use these translated headings when the CV output language is not English. All ot
 | Technical Skills | TECHNICAL SKILLS | TECHNISCHE KENNTNISSE |
 | Professional Experience | PROFESSIONAL EXPERIENCE | BERUFSERFAHRUNG |
 | Education | EDUCATION | AUSBILDUNG |
-| Certifications | CERTIFICATIONS | ZERTIFIZIERUNGEN |
+| Certifications | CERTIFICATIONS | WEITERBILDUNG |
 | Awards | AWARDS | AUSZEICHNUNGEN |
 | Publications & Open Source | PUBLICATIONS & OPEN SOURCE | PUBLIKATIONEN & OPEN SOURCE |
 | Community & Speaking | COMMUNITY & SPEAKING | EHRENAMT & VORTRÄGE |
