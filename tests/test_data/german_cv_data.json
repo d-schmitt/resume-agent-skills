@@ -1,0 +1,108 @@
+{
+  "header": {
+    "name": "Mariä Chen",
+    "contact_line": "München, Deutschland  \u00b7  mariae.chen@email.de  \u00b7  linkedin.com/in/mariaechen  \u00b7  github.com/mariaechen",
+    "languages": "Deutsch (Muttersprache)  ·  Englisch (verhandlungssicher)"
+  },
+  "sections": [
+    {
+      "type": "summary",
+      "heading": "BERUFLICHES PROFIL",
+      "body": "Erfahrene Softwareingenieurin mit über 7 Jahren Expertise in der Entwicklung skalierbarer Webanwendungen und der Führung agiler Teams. Nachgewiesene Erfolge bei der Umsetzung cloudnativer Plattformen, die täglich über 3 Mio. Transaktionen verarbeiten. Leidenschaft für Developer Experience, Nachwuchsförderung und die Einführung moderner DevOps-Praktiken."
+    },
+    {
+      "type": "skills_list",
+      "heading": "KERNKOMPETENZEN",
+      "items": [
+        "Cloud-Architektur",
+        "Full-Stack-Entwicklung",
+        "Teamführung",
+        "CI/CD-Pipeline-Design",
+        "Microservices",
+        "Agile/Scrum",
+        "Stakeholder-Kommunikation",
+        "Technisches Mentoring"
+      ]
+    },
+    {
+      "type": "technical_skills",
+      "heading": "TECHNISCHE KENNTNISSE",
+      "categories": [
+        {"label": "Sprachen", "value": "TypeScript, Python, Go, SQL, HTML/CSS"},
+        {"label": "Frameworks", "value": "React, Next.js, FastAPI, Django"},
+        {"label": "Cloud & DevOps", "value": "AWS (ECS, Lambda, RDS, S3), Docker, Kubernetes, Terraform, GitHub Actions"},
+        {"label": "Datenbanken", "value": "PostgreSQL, Redis, DynamoDB"},
+        {"label": "Methoden", "value": "Scrum, Kanban, TDD, Domain-Driven Design"}
+      ]
+    },
+    {
+      "type": "experience",
+      "heading": "BERUFSERFAHRUNG",
+      "roles": [
+        {
+          "title": "Senior Softwareingenieurin",
+          "company_line": "TechAG  |  München, Deutschland  |  Apr 2021 – heute",
+          "bullets": [
+            "Leitete die Migration einer monolithischen Anwendung zu einer Microservices-Architektur auf AWS, wodurch die durchschnittliche Antwortzeit von 900 ms auf 130 ms reduziert wurde.",
+            "Entwickelte eine Echtzeit-Ereignisverarbeitungs-Pipeline mit Kafka und Lambda, die täglich über 3 Mio. Ereignisse bei einer Latenz von unter einer Sekunde verarbeitet.",
+            "Betreute ein Team von 5 Juniorentwicklern durch wöchentliche Code-Reviews und Pair-Programming-Sitzungen – Einarbeitungszeit um 35 % verkürzt.",
+            "Verantwortete die Einführung von Terraform zur Infrastrukturautomatisierung über 60+ AWS-Ressourcen in drei Umgebungen, inklusive Zero-Downtime-Deployments.",
+            "Entwickelte einen Architektur-RFC-Prozess, der von vier Teams übernommen wurde und die teamübergreifende Abstimmung wesentlich verbesserte."
+          ]
+        },
+        {
+          "title": "Softwareentwicklerin",
+          "company_line": "StartupGmbH  |  Berlin, Deutschland  |  Jul 2018 – Mär 2021",
+          "bullets": [
+            "Entwickelte das kundenorientierte Dashboard mit React und Next.js für über 12.000 monatlich aktive Nutzer mit einem Lighthouse-Score von 97 %.",
+            "Implementierte eine automatisierte CI/CD-Pipeline mit GitHub Actions, die die Deployment-Zeit von 50 auf 9 Minuten reduzierte.",
+            "Erstellte RESTful-APIs in Python/FastAPI für die Zahlungsabwicklung, die monatlich Transaktionen im Wert von über 6 Mio. € verarbeiten.",
+            "Führte automatisierte Tests (Unit + Integration) ein und steigerte die Code-Abdeckung von 25 % auf 88 %."
+          ]
+        }
+      ]
+    },
+    {
+      "type": "education",
+      "heading": "AUSBILDUNG",
+      "entries": [
+        {
+          "title": "M.Sc. Informatik",
+          "subtitle": "Technische Universität München  |  2014 – 2016",
+          "detail": "Abschlussarbeit: Optimierung der Container-Orchestrierung mithilfe von Reinforcement Learning"
+        },
+        {
+          "title": "B.Sc. Softwaretechnik",
+          "subtitle": "Humboldt-Universität zu Berlin  |  2011 – 2014",
+          "detail": null
+        }
+      ]
+    },
+    {
+      "type": "certifications",
+      "heading": "ZERTIFIZIERUNGEN",
+      "items": [
+        {"name": "AWS Solutions Architect – Associate", "detail": " — Amazon Web Services (Feb 2023)"},
+        {"name": "Certified Kubernetes Administrator (CKA)", "detail": " — CNCF (Okt 2022)"},
+        {"name": "Professional Scrum Master I (PSM I)", "detail": " — Scrum.org (Mai 2021)"}
+      ]
+    },
+    {
+      "type": "bullets_section",
+      "heading": "PUBLIKATIONEN & OPEN SOURCE",
+      "bullets": [
+        "Kernbeitrag zu FastAPI – Implementierung eines asynchronen Middleware-Refactorings, das in v0.100 zusammengeführt wurde und die Antwortlatenz um 14 % senkte.",
+        "Miterfinderin von Patent DE 10 2023 004 567 – Verfahren zur Echtzeit-Anomalieerkennung in Container-Orchestrierungssystemen (angemeldet 2023)."
+      ]
+    },
+    {
+      "type": "bullets_section",
+      "heading": "EHRENAMT & VORTRÄGE",
+      "bullets": [
+        "Vortrag beim Münchner JS Meetup: Microservices ohne Kopfschmerzen – ein Erfahrungsbericht (2023).",
+        "Open-Source-Beiträge zu FastAPI und dem Terraform AWS-Provider.",
+        "Mentorin bei der ReDI School of Digital Integration – Webentwicklung für Geflüchtete (2021 – heute)."
+      ]
+    }
+  ]
+}

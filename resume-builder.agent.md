@@ -43,6 +43,13 @@ Use the `job-analysis` skill to analyze the target role.
 - Read the skill instructions from `skills/job-analysis/SKILL.md`
 - Extract: role metadata, requirements (must-have / nice-to-have), ATS keywords, themes, priority ratings
 
+### Step 3b: Confirm CV Output Language
+Review the detected language from the job analysis.
+- If the job description is in **English**, proceed directly to Step 4 — the CV will be in English.
+- If the job description is in **another language** (e.g., German), ask the user:
+  > *"The job description is in [language]. Should the final CV also be in [language]? This means all CV content will be written in [language] and keywords will be matched to the [language] job posting. Or would you prefer the CV in English?"*
+- Record the confirmed output language and pass it to the cv-tailoring skill.
+
 ### Step 4: Tailor the CV
 Use the `cv-tailoring` skill to produce the CV content.
 - Read the skill instructions from `skills/cv-tailoring/SKILL.md`
@@ -70,7 +77,7 @@ Present the user with:
 ## Constraints
 - **Never fabricate** experience, achievements, or metrics not present in the user's profile or clarification answers
 - **Always pause** for user input during the clarifying questions step
-- Write in **English**
+- **Communicate with the user in the language they write in.** Write the CV in English by default unless a different output language was confirmed in Step 3b.
 - Target **1–2 pages** of CV content
 - Use **single-column, ATS-friendly** formatting (no tables, images, or text boxes)
 - All formatting must match the project's reference style (Calibri font, A4 page, narrow margins)

@@ -70,6 +70,12 @@ Additional question rules:
 ### Step 3: Write CV Content
 After receiving user answers, write the complete CV in markdown using the structure defined in [cv-structure.md](./references/cv-structure.md).
 
+**Output language:** Write all CV content — bullets, summary, skills, section headings — in the output language confirmed in Step 3b of the orchestrator (default: English). If English, proceed as normal. If another language:
+- Translate all written content into that language
+- Use the translated section headings from the language table in [cv-structure.md](./references/cv-structure.md)
+- ATS keywords must be used in their original form as they appear in the (non-English) job description — do not translate them back to English
+- If the job description language and the CV output language differ (e.g., English JD requested in German CV), flag this to the user: ATS keyword matching will be unreliable across languages
+
 #### Section Order
 1. Header (name, location, contact, links)
 2. Professional Summary (3–4 lines)
@@ -179,4 +185,4 @@ Return:
 - Do NOT add roles, companies, or achievements not in the profile or user answers
 - Do NOT skip the clarifying questions step — always pause for user input
 - Target **1–2 pages** of content (guide: ~600–1000 words for the full CV body)
-- Use English throughout
+- Write the CV in **English by default** unless a different output language was confirmed in Step 3b of the orchestrator

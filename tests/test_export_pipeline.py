@@ -16,6 +16,7 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).parent.parent
 TESTS_DIR = Path(__file__).parent
 TEST_DATA = TESTS_DIR / "test_data" / "fictional_cv_data.json"
+GERMAN_TEST_DATA = TESTS_DIR / "test_data" / "german_cv_data.json"
 OUTPUT_DIR = TESTS_DIR / "output"
 REFERENCE_DOCX = TESTS_DIR / "test_data" / "reference_resume.docx"
 REFERENCE_PDF = TESTS_DIR / "test_data" / "reference_resume.pdf"
@@ -26,6 +27,8 @@ COMPARE_PDF_SCRIPT = TESTS_DIR / "compare_pdf_formatting.py"
 
 OUTPUT_DOCX = OUTPUT_DIR / "test_resume.docx"
 OUTPUT_PDF = OUTPUT_DIR / "test_resume.pdf"
+GERMAN_OUTPUT_DOCX = OUTPUT_DIR / "test_resume_german.docx"
+GERMAN_OUTPUT_PDF = OUTPUT_DIR / "test_resume_german.pdf"
 
 
 def run(cmd, label):
@@ -50,7 +53,7 @@ def main():
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
     # Clean previous output
-    for f in [OUTPUT_DOCX, OUTPUT_PDF]:
+    for f in [OUTPUT_DOCX, OUTPUT_PDF, GERMAN_OUTPUT_DOCX, GERMAN_OUTPUT_PDF]:
         if f.exists():
             f.unlink()
 
@@ -119,6 +122,31 @@ def main():
         print(f"\nWARNING: Reference file not found: {REFERENCE_PDF}")
         print("  To create it: cp tests/output/test_resume.pdf tests/test_data/reference_resume.pdf")
         results.append(("PDF formatting comparison", "SKIP (no reference file)"))
+
+    # Step 5: German encoding — verify export scripts handle umlauts and ß without errors
+    rc = run(
+        [python, EXPORT_DOCX_SCRIPT, GERMAN_TEST_DATA, "--output", GERMAN_OUTPUT_DOCX],
+        "German encoding: Generate DOCX (ä, ö, ü, ß)",
+    )
+    if rc != 0:
+        results.append(("German encoding: DOCX", "FAIL (non-zero exit)"))
+    elif not GERMAN_OUTPUT_DOCX.exists() or GERMAN_OUTPUT_DOCX.stat().st_size == 0:
+        results.append(("German encoding: DOCX", "FAIL (empty or missing file)"))
+    else:
+        print(f"\nGerman DOCX generated: {GERMAN_OUTPUT_DOCX} ({GERMAN_OUTPUT_DOCX.stat().st_size:,} bytes)")
+        results.append(("German encoding: DOCX", "PASS"))
+
+    rc = run(
+        [python, EXPORT_PDF_SCRIPT, GERMAN_TEST_DATA, "--output", GERMAN_OUTPUT_PDF],
+        "German encoding: Generate PDF (ä, ö, ü, ß)",
+    )
+    if rc != 0:
+        results.append(("German encoding: PDF", "FAIL (non-zero exit)"))
+    elif not GERMAN_OUTPUT_PDF.exists() or GERMAN_OUTPUT_PDF.stat().st_size == 0:
+        results.append(("German encoding: PDF", "FAIL (empty or missing file)"))
+    else:
+        print(f"\nGerman PDF generated: {GERMAN_OUTPUT_PDF} ({GERMAN_OUTPUT_PDF.stat().st_size:,} bytes)")
+        results.append(("German encoding: PDF", "PASS"))
 
     # Summary
     print(f"\n{'='*60}")
