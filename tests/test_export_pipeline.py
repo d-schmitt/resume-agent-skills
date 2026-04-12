@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """End-to-end test of the CV export pipeline.
 
-Feeds fictional test data through export_docx.py, optionally export_pdf.py,
-then compares formatting against Resume_generic.docx.
+Feeds fictional test data through export_docx.py and export_pdf.py independently,
+then compares both outputs against their respective reference files.
 
-Usage: python test_export_pipeline.py [--skip-pdf]
+Usage: python test_export_pipeline.py
 """
 
 import os
@@ -17,10 +17,12 @@ REPO_ROOT = Path(__file__).parent.parent
 TESTS_DIR = Path(__file__).parent
 TEST_DATA = TESTS_DIR / "test_data" / "fictional_cv_data.json"
 OUTPUT_DIR = TESTS_DIR / "output"
-REFERENCE_DOCX = REPO_ROOT / "Resume_generic.docx"
+REFERENCE_DOCX = TESTS_DIR / "test_data" / "reference_resume.docx"
+REFERENCE_PDF = TESTS_DIR / "test_data" / "reference_resume.pdf"
 EXPORT_DOCX_SCRIPT = REPO_ROOT / "skills" / "cv-export" / "scripts" / "export_docx.py"
 EXPORT_PDF_SCRIPT = REPO_ROOT / "skills" / "cv-export" / "scripts" / "export_pdf.py"
 COMPARE_SCRIPT = TESTS_DIR / "compare_formatting.py"
+COMPARE_PDF_SCRIPT = TESTS_DIR / "compare_pdf_formatting.py"
 
 OUTPUT_DOCX = OUTPUT_DIR / "test_resume.docx"
 OUTPUT_PDF = OUTPUT_DIR / "test_resume.pdf"
@@ -44,8 +46,6 @@ def run(cmd, label):
 
 
 def main():
-    skip_pdf = "--skip-pdf" in sys.argv
-
     # Ensure output directory exists
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
@@ -72,40 +72,53 @@ def main():
     print(f"\nDOCX generated: {OUTPUT_DOCX} ({docx_size:,} bytes)")
     results.append(("DOCX generation", "PASS"))
 
-    # Step 2: Generate PDF (optional)
-    if not skip_pdf:
-        rc = run(
-            [python, EXPORT_PDF_SCRIPT, OUTPUT_DOCX, "--output", OUTPUT_PDF],
-            "Generate PDF from DOCX",
-        )
-        if rc != 0:
-            print("\nWARNING: PDF generation failed (this requires MS Word or LibreOffice)")
-            results.append(("PDF generation", "SKIP (no converter)"))
-        elif OUTPUT_PDF.exists():
-            pdf_size = OUTPUT_PDF.stat().st_size
-            if pdf_size > 0:
-                print(f"\nPDF generated: {OUTPUT_PDF} ({pdf_size:,} bytes)")
-                results.append(("PDF generation", "PASS"))
-            else:
-                results.append(("PDF generation", "FAIL (empty file)"))
+    # Step 2: Generate PDF from JSON directly
+    rc = run(
+        [python, EXPORT_PDF_SCRIPT, TEST_DATA, "--output", OUTPUT_PDF],
+        "Generate PDF from test data",
+    )
+    if rc != 0:
+        print("\nWARNING: PDF generation failed")
+        results.append(("PDF generation", "FAIL"))
+    elif OUTPUT_PDF.exists():
+        pdf_size = OUTPUT_PDF.stat().st_size
+        if pdf_size > 0:
+            print(f"\nPDF generated: {OUTPUT_PDF} ({pdf_size:,} bytes)")
+            results.append(("PDF generation", "PASS"))
         else:
-            results.append(("PDF generation", "FAIL (file not created)"))
+            results.append(("PDF generation", "FAIL (empty file)"))
     else:
-        results.append(("PDF generation", "SKIP (--skip-pdf)"))
+        results.append(("PDF generation", "FAIL (file not created)"))
 
-    # Step 3: Compare formatting against reference
+    # Step 3: Compare DOCX formatting against reference
     if REFERENCE_DOCX.exists():
         rc = run(
             [python, COMPARE_SCRIPT, REFERENCE_DOCX, OUTPUT_DOCX],
-            "Compare formatting with reference",
+            "Compare DOCX formatting with reference",
         )
         if rc == 0:
-            results.append(("Formatting comparison", "PASS"))
+            results.append(("DOCX formatting comparison", "PASS"))
         else:
-            results.append(("Formatting comparison", "FAIL"))
+            results.append(("DOCX formatting comparison", "FAIL"))
     else:
         print(f"\nWARNING: Reference file not found: {REFERENCE_DOCX}")
-        results.append(("Formatting comparison", "SKIP (no reference file)"))
+        print("  To create it: cp tests/output/test_resume.docx tests/test_data/reference_resume.docx")
+        results.append(("DOCX formatting comparison", "SKIP (no reference file)"))
+
+    # Step 4: Compare PDF against reference
+    if REFERENCE_PDF.exists():
+        rc = run(
+            [python, COMPARE_PDF_SCRIPT, REFERENCE_PDF, OUTPUT_PDF],
+            "Compare PDF formatting with reference",
+        )
+        if rc == 0:
+            results.append(("PDF formatting comparison", "PASS"))
+        else:
+            results.append(("PDF formatting comparison", "FAIL"))
+    else:
+        print(f"\nWARNING: Reference file not found: {REFERENCE_PDF}")
+        print("  To create it: cp tests/output/test_resume.pdf tests/test_data/reference_resume.pdf")
+        results.append(("PDF formatting comparison", "SKIP (no reference file)"))
 
     # Summary
     print(f"\n{'='*60}")

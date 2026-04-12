@@ -104,19 +104,21 @@ python skills/cv-export/scripts/export_docx.py cv_data.json --output resume_outp
 ```
 
 ### Step 4: Generate PDF
-Run the PDF conversion script:
+Run the PDF export script directly from the same JSON:
 ```bash
-python skills/cv-export/scripts/export_pdf.py resume_output.docx --output resume_output.pdf
+python skills/cv-export/scripts/export_pdf.py cv_data.json --output resume_output.pdf
 ```
 
 ### Step 5: Deliver
-Present both files to the user for download. If PDF generation fails (e.g., missing system dependencies), inform the user and deliver the DOCX only, with instructions for manual PDF conversion.
+Present both files to the user for download.
 
 ## Dependencies
 Install before first use:
 ```bash
 pip install -r skills/cv-export/scripts/requirements.txt
 ```
+
+Requires `python-docx` (DOCX generation) and `reportlab` (PDF generation). No external tools such as Microsoft Word or LibreOffice are needed.
 
 ## Constraints
 - Output must be **single-column**, ATS-friendly layout

@@ -58,7 +58,7 @@ Use the `cv-export` skill to produce formatted documents.
 - Save the JSON and run the export scripts:
   ```bash
   python skills/cv-export/scripts/export_docx.py cv_data.json --output resume.docx
-  python skills/cv-export/scripts/export_pdf.py resume.docx --output resume.pdf
+  python skills/cv-export/scripts/export_pdf.py cv_data.json --output resume.pdf
   ```
 - If export scripts haven't been set up yet, guide the user to install dependencies first:
   ```bash
