@@ -55,20 +55,11 @@ Use the `cv-tailoring` skill to produce the CV content.
 Use the `cv-export` skill to produce formatted documents.
 - Read the skill instructions from `skills/cv-export/SKILL.md`
 - Convert the CV content to the required JSON structure
-- Save the JSON and run the export scripts.
-
-  **With `uv` (recommended — no setup needed):**
-  ```bash
-  uv run skills/cv-export/scripts/export_docx.py cv_data.json --output resume.docx
-  uv run skills/cv-export/scripts/export_pdf.py cv_data.json --output resume.pdf
-  ```
-
-  **Without `uv` (requires dependencies installed):**
-  ```bash
-  pip install -r requirements.txt
-  python skills/cv-export/scripts/export_docx.py cv_data.json --output resume.docx
-  python skills/cv-export/scripts/export_pdf.py cv_data.json --output resume.pdf
-  ```
+- Save the JSON and run the export scripts, adapting to the environment:
+  1. **Detect `uv`**: run `which uv`. If found, use `uv run` — it resolves dependencies automatically from the script's inline metadata, no install step needed.
+  2. **No `uv`**: check whether `python-docx` and `reportlab` are importable. If not, run `pip install python-docx reportlab` before proceeding.
+  3. **Script path**: use `skills/cv-export/scripts/export_docx.py` if that path exists (local/Copilot/Claude Code). In a sandbox where knowledge files land in the working directory, use `export_docx.py` directly.
+  4. Run both scripts and confirm each exits with code 0 before proceeding.
 
 ### Step 6: Deliver
 Present the user with:
