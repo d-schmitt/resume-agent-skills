@@ -115,7 +115,7 @@ Present both files to the user for download.
 ## Dependencies
 Install before first use:
 ```bash
-pip install -r skills/cv-export/scripts/requirements.txt
+pip install -r requirements.txt
 ```
 
 Requires `python-docx` (DOCX generation) and `reportlab` (PDF generation). No external tools such as Microsoft Word or LibreOffice are needed.

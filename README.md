@@ -13,12 +13,29 @@ Build a tailored, ATS-friendly CV for any job description using your LinkedIn pr
 ## Quick Start
 
 ### Prerequisites
-- Python 3.13.7
+- Python 3.10 or newer
 - An AI tool that supports custom agents/skills (GitHub Copilot, Claude Code, Perplexity, Langdock, etc.)
 
 ### Install Dependencies
+
+**With `uv` (recommended — fastest, no manual venv needed):**
 ```bash
-pip install -r skills/cv-export/scripts/requirements.txt
+# Install uv if you don't have it
+curl -LsSf https://astral.sh/uv/install.sh | sh   # macOS/Linux
+# or: brew install uv
+# or (Windows): winget install astral-sh.uv
+
+# Run scripts directly — uv handles the environment automatically
+uv run skills/cv-export/scripts/export_docx.py cv_data.json --output resume.docx
+uv run skills/cv-export/scripts/export_pdf.py cv_data.json --output resume.pdf
+```
+
+**Without `uv` (standard pip + venv):**
+```bash
+python3 -m venv .venv
+source .venv/bin/activate        # macOS/Linux
+# .venv\Scripts\activate         # Windows
+pip install -r requirements.txt
 ```
 
 ### Usage
@@ -72,7 +89,7 @@ Perplexity doesn't support agent/skill files natively, but you can replicate the
    - `skills/cv-export/SKILL.md`
    - `skills/cv-export/scripts/export_docx.py`
    - `skills/cv-export/scripts/export_pdf.py`
-   - `skills/cv-export/scripts/requirements.txt`
+   - `requirements.txt`
    - `examples/sample-output.md`
 
 **Step 2: Run the CV workflow**
@@ -83,7 +100,7 @@ Perplexity doesn't support agent/skill files natively, but you can replicate the
 1. Switch to **Computer** mode in Perplexity
 2. Ask it to export your CV, for example:
    > *"Please export the CV we just built to DOCX and PDF. Use the export scripts from the knowledge files. Install Python and any required packages if they are not already available."*
-3. Computer mode will take care of the rest — it can install Python if needed, install `python-docx` via pip, run `export_docx.py` to generate the DOCX, and produce a PDF using whichever tool it finds available (Microsoft Word, LibreOffice, or an online converter)
+3. Computer mode will take care of the rest — it can install Python if needed, install `python-docx` and `reportlab` via pip, and run both export scripts to generate the DOCX and PDF.
 
 ### Langdock (Agents)
 Langdock supports custom agents with instructions, knowledge files, and multi-agent delegation.
@@ -97,7 +114,7 @@ Langdock supports custom agents with instructions, knowledge files, and multi-ag
    - `skills/cv-export/SKILL.md` (so the agent knows the exact JSON schema to produce)
    - `skills/cv-export/scripts/export_docx.py`
    - `skills/cv-export/scripts/export_pdf.py`
-   - `skills/cv-export/scripts/requirements.txt`
+   - `requirements.txt`
 5. Under **Actions → Capabilities**, enable **Data Analysis** (lets the agent run the Python export scripts)
 6. Set **Creativity** slider to low (0.2–0.3) for consistent, professional output
 7. Optionally add **Conversation Starters** like: *"Build a CV from my LinkedIn profile for this job description"*
@@ -105,7 +122,7 @@ Langdock supports custom agents with instructions, knowledge files, and multi-ag
 **Option B — Multi-agent (advanced):**
 Create separate agents for each skill (profile-extraction, job-analysis, cv-tailoring, cv-export) with their respective `SKILL.md` as instructions. Then create an orchestrator agent using `resume-builder.agent.md` and attach the skill agents via **Actions → Other Agents** for delegation.
 
-> **DOCX/PDF export:** With Data Analysis enabled, the agent can run the Python export scripts directly. The scripts require `python-docx` — if the sandbox doesn't have it pre-installed, add a line to the agent instructions telling it to run `pip install python-docx` before executing the export. PDF conversion via `docx2pdf` requires Microsoft Word, which won't be available in the sandbox; the agent will produce the DOCX and you can convert to PDF locally if needed.
+> **DOCX/PDF export:** With Data Analysis enabled, the agent can run the Python export scripts directly. The scripts require `python-docx` and `reportlab` — if the sandbox doesn't have them pre-installed, add a line to the agent instructions telling it to run `pip install -r requirements.txt` before executing the export.
 
 > **Tip:** If your Langdock workspace has the Slack or Teams integration, you can chat with the Resume Builder agent directly from Slack or Microsoft Teams.
 
@@ -130,8 +147,10 @@ resume-agent-skills/
 │       ├── SKILL.md                  # Export orchestration
 │       └── scripts/
 │           ├── export_docx.py        # DOCX generation (python-docx)
-│           ├── export_pdf.py         # PDF conversion (docx2pdf / LibreOffice)
-│           └── requirements.txt      # Python dependencies
+│           ├── export_pdf.py         # PDF generation (reportlab, pure Python)
+│           └── requirements.txt      # Runtime dependencies for AI sandboxes
+├── requirements.txt                  # Runtime dependencies (local)
+├── requirements-dev.txt              # Dev/test dependencies (local)
 ├── prompts/
 │   └── build-resume.prompt.md        # Quick-start /build-resume command
 ├── tests/                            # Formatting validation tests
@@ -164,25 +183,28 @@ The generated CV uses a clean, ATS-friendly format:
 
 ## PDF Generation
 
-PDF conversion requires one of:
-- **Microsoft Word** + `docx2pdf` (macOS/Windows) — best fidelity
-- **LibreOffice** (all platforms) — `brew install --cask libreoffice` on macOS
-
-The export script tries both automatically and reports which method was used.
+PDF is generated directly from JSON using **ReportLab** — no Microsoft Word, LibreOffice, or other external tools required. Both DOCX and PDF are produced from the same `cv_data.json` input and can be generated independently.
 
 ## Running Tests
 
-The test suite validates that the export pipeline produces DOCX files matching the reference formatting:
+The test suite validates that both export scripts produce output matching the reference files.
 
+**With `uv`:**
 ```bash
-# Install test dependencies (same as export)
-pip install -r skills/cv-export/scripts/requirements.txt
+uv run --with pypdf tests/test_export_pipeline.py
+```
 
-# Run the full pipeline test
+**With pip:**
+```bash
+pip install -r requirements-dev.txt
 python tests/test_export_pipeline.py
 ```
 
-This generates a DOCX from fictional test data and compares its formatting against the reference document.
+This generates a DOCX and PDF from fictional test data and compares both against their respective reference files in `tests/test_data/`. To update the baselines after an intentional formatting change:
+```bash
+cp tests/output/test_resume.docx tests/test_data/reference_resume.docx
+cp tests/output/test_resume.pdf  tests/test_data/reference_resume.pdf
+```
 
 ## Future Extensions
 

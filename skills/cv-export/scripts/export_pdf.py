@@ -1,7 +1,13 @@
 #!/usr/bin/env python3
+# /// script
+# requires-python = ">=3.10"
+# dependencies = ["reportlab>=4.0"]
+# ///
 """Generate a professionally formatted PDF resume directly from structured JSON data.
 
-Usage: python export_pdf.py <cv_data.json> [--output <filename.pdf>]
+Usage:
+  uv run export_pdf.py <cv_data.json> [--output <filename.pdf>]
+  python export_pdf.py <cv_data.json> [--output <filename.pdf>]
 
 Generates PDF using ReportLab — no Word, LibreOffice, or other external tools
 required. Calibri is used if available on the system; Helvetica is the fallback.

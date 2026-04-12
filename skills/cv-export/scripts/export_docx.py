@@ -1,7 +1,13 @@
 #!/usr/bin/env python3
+# /// script
+# requires-python = ">=3.10"
+# dependencies = ["python-docx>=1.1.0"]
+# ///
 """Generate a professionally formatted DOCX resume from structured JSON data.
 
-Usage: python export_docx.py <cv_data.json> [--output <filename.docx>]
+Usage:
+  uv run export_docx.py <cv_data.json> [--output <filename.docx>]
+  python export_docx.py <cv_data.json> [--output <filename.docx>]
 
 The JSON input schema is defined in skills/cv-export/SKILL.md.
 Formatting matches the Resume_generic.docx reference document.

@@ -1,0 +1,5 @@
+# Includes all runtime dependencies
+-r requirements.txt
+
+# Test dependencies
+pypdf>=4.0

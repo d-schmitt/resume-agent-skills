@@ -55,14 +55,19 @@ Use the `cv-tailoring` skill to produce the CV content.
 Use the `cv-export` skill to produce formatted documents.
 - Read the skill instructions from `skills/cv-export/SKILL.md`
 - Convert the CV content to the required JSON structure
-- Save the JSON and run the export scripts:
+- Save the JSON and run the export scripts.
+
+  **With `uv` (recommended — no setup needed):**
   ```bash
+  uv run skills/cv-export/scripts/export_docx.py cv_data.json --output resume.docx
+  uv run skills/cv-export/scripts/export_pdf.py cv_data.json --output resume.pdf
+  ```
+
+  **Without `uv` (requires dependencies installed):**
+  ```bash
+  pip install -r requirements.txt
   python skills/cv-export/scripts/export_docx.py cv_data.json --output resume.docx
   python skills/cv-export/scripts/export_pdf.py cv_data.json --output resume.pdf
-  ```
-- If export scripts haven't been set up yet, guide the user to install dependencies first:
-  ```bash
-  pip install -r skills/cv-export/scripts/requirements.txt
   ```
 
 ### Step 6: Deliver
