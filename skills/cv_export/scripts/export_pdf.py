@@ -12,7 +12,7 @@ Usage:
 Generates PDF using ReportLab — no Word, LibreOffice, or other external tools
 required. Calibri is used if available on the system; Helvetica is the fallback.
 
-The JSON input schema is defined in skills/cv-export/SKILL.md.
+The JSON input schema is defined in skills/cv_export/SKILL.md.
 """
 
 import argparse

@@ -1,5 +1,5 @@
 ---
-name: cv-tailoring
+name: cv_tailoring
 description: "Tailor CV content to a specific job by performing gap analysis, asking clarifying questions, and writing all CV sections. Use when: writing a resume, tailoring CV to job description, gap analysis between profile and job requirements, generating CV bullet points."
 argument-hint: "Provide the extracted profile data and job analysis"
 ---
@@ -10,8 +10,8 @@ argument-hint: "Provide the extracted profile data and job analysis"
 Compare a candidate's profile against job requirements, identify gaps, gather missing information through targeted questions, and produce complete, tailored CV content in markdown.
 
 ## Required Inputs
-1. **Structured profile data** — output from the `profile-extraction` skill
-2. **Structured job analysis** — output from the `job-analysis` skill
+1. **Structured profile data** — output from the `cv_profile_extraction` skill
+2. **Structured job analysis** — output from the `cv_job_analysis` skill
 
 If either input is missing, ask the user to run the corresponding skill first.
 
@@ -122,7 +122,7 @@ Rules:
 - Use **ATS keywords** from the job analysis naturally in bullets and skills sections
 
 ### Step 4: ATS Score
-After writing the CV, calculate a content-based ATS score (0–100). **Parseability** (layout, fonts, no images) is a binary gate handled by the cv-export skill and guaranteed by its fixed output format — it is not scored here. This score measures only what can be evaluated from the CV text.
+After writing the CV, calculate a content-based ATS score (0–100). **Parseability** (layout, fonts, no images) is a binary gate handled by the cv_export skill and guaranteed by its fixed output format — it is not scored here. This score measures only what can be evaluated from the CV text.
 
 | Category | Points | What it measures |
 |---|---|---|
@@ -176,7 +176,7 @@ After the CV content, generate a **"Strengthening Advice"** section with 5–7 b
 
 ### Step 6: Output
 Return:
-1. The complete CV content in markdown (ready for the `cv-export` skill)
+1. The complete CV content in markdown (ready for the `cv_export` skill)
 2. The ATS Score with per-category breakdown and any specific fixes
 3. The Strengthening Advice section
 

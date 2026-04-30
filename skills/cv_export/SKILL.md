@@ -1,5 +1,5 @@
 ---
-name: cv-export
+name: cv_export
 description: "Export CV content to professionally formatted DOCX and PDF files. Use when: generating resume documents, creating DOCX from CV content, converting resume to PDF, formatting CV for download."
 argument-hint: "Provide the CV content in markdown format"
 ---
@@ -10,7 +10,7 @@ argument-hint: "Provide the CV content in markdown format"
 Convert CV content (markdown) into professionally formatted DOCX and PDF files matching a clean, ATS-friendly, single-column layout.
 
 ## Required Input
-- **CV content in markdown** — output from the `cv-tailoring` skill
+- **CV content in markdown** — output from the `cv_tailoring` skill
 - **Output filename** (optional, defaults to `resume_output`)
 
 ## Procedure
@@ -111,13 +111,13 @@ If any check fails, correct the JSON before proceeding.
 ### Step 4: Generate DOCX
 Run the export script:
 ```bash
-python skills/cv-export/scripts/export_docx.py cv_data.json --output resume_output.docx
+python skills/cv_export/scripts/export_docx.py cv_data.json --output resume_output.docx
 ```
 
 ### Step 5: Generate PDF
 Run the PDF export script directly from the same JSON:
 ```bash
-python skills/cv-export/scripts/export_pdf.py cv_data.json --output resume_output.pdf
+python skills/cv_export/scripts/export_pdf.py cv_data.json --output resume_output.pdf
 ```
 
 ### Step 6: Deliver
