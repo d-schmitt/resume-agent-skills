@@ -92,10 +92,24 @@ def load_template(template_path):
     """Load a template JSON file and return its data dict."""
     path = Path(template_path)
     if not path.exists():
-        print(f"Error: Template file not found: {path}", file=sys.stderr)
+        print(
+            f"Error: Template file not found: {path}\n"
+            f"  Built-in templates are in: skills/cv-export/templates/\n"
+            f"  Example: --template skills/cv-export/templates/classic.json",
+            file=sys.stderr,
+        )
         sys.exit(1)
-    with open(path, "r", encoding="utf-8") as f:
-        return json.load(f)
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            return json.load(f)
+    except json.JSONDecodeError as exc:
+        print(
+            f"Error: Template file contains invalid JSON: {path}\n"
+            f"  {exc}\n"
+            f"  Check the template against skills/cv-export/templates/classic.json for the expected format.",
+            file=sys.stderr,
+        )
+        sys.exit(1)
 
 
 def apply_template(template):
