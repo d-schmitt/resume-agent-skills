@@ -1,0 +1,7 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Test outputs (generated during test runs)
+tests/output/
