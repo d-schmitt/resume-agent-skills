@@ -12,6 +12,33 @@ Convert CV content (markdown) into professionally formatted DOCX and PDF files m
 ## Required Input
 - **CV content in markdown** — output from the `cv-tailoring` skill
 - **Output filename** (optional, defaults to `resume_output`)
+- **Template** (optional, defaults to the built-in Classic style)
+
+## Available Templates
+
+Templates live in `skills/cv-export/templates/`. Each template is a JSON file that controls fonts, colors, spacing, and page margins. Pass the template path via `--template` to either export script.
+
+| Template file | Name | Description |
+|---|---|---|
+| `classic.json` | Classic | Single-column Calibri layout on A4 with narrow margins and a dark-grey heading bar. This is the default style. |
+
+To use a template:
+```bash
+python skills/cv-export/scripts/export_docx.py cv_data.json --output resume.docx --template skills/cv-export/templates/classic.json
+python skills/cv-export/scripts/export_pdf.py  cv_data.json --output resume.pdf  --template skills/cv-export/templates/classic.json
+```
+
+If no `--template` flag is provided, the scripts use the same formatting values that `classic.json` encodes (they are the built-in defaults).
+
+### Creating a Custom Template
+Copy `classic.json`, rename it, and adjust any of the following keys:
+- `font.family` — font name (must be installed on the system for PDF; Helvetica is the PDF fallback)
+- `font.sizes.*` — font sizes in points
+- `colors.*` — hex color strings (`#RRGGBB`)
+- `page.margin_*_cm` — page margins in centimetres
+- `spacing.*_pt` — spacing between elements in points
+
+The template is applied before generating the document, so all section renderers automatically use the updated values.
 
 ## Procedure
 
@@ -114,10 +141,20 @@ Run the export script:
 python skills/cv-export/scripts/export_docx.py cv_data.json --output resume_output.docx
 ```
 
+To apply a specific template:
+```bash
+python skills/cv-export/scripts/export_docx.py cv_data.json --output resume_output.docx --template skills/cv-export/templates/classic.json
+```
+
 ### Step 5: Generate PDF
 Run the PDF export script directly from the same JSON:
 ```bash
 python skills/cv-export/scripts/export_pdf.py cv_data.json --output resume_output.pdf
+```
+
+To apply a specific template:
+```bash
+python skills/cv-export/scripts/export_pdf.py cv_data.json --output resume_output.pdf --template skills/cv-export/templates/classic.json
 ```
 
 ### Step 6: Deliver
@@ -134,6 +171,6 @@ Requires `python-docx` (DOCX generation) and `reportlab` (PDF generation). No ex
 ## Constraints
 - Output must be **single-column**, ATS-friendly layout
 - Do NOT use tables, text boxes, images, or headers/footers in the DOCX
-- Font: Calibri throughout
+- Font: Calibri throughout (Helvetica fallback in PDF if Calibri is not installed)
 - Page size: A4 with narrow margins
 - The formatting must match the reference document's visual style

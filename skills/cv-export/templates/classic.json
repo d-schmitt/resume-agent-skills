@@ -1,0 +1,53 @@
+{
+  "name": "Classic",
+  "description": "Single-column, ATS-friendly layout using Calibri font on A4 paper with narrow margins. Clean, professional appearance with a dark-grey heading bar. This is the default template for the resume-builder agent.",
+  "font": {
+    "family": "Calibri",
+    "sizes": {
+      "name": 20,
+      "contact": 8.5,
+      "section_heading": 10,
+      "summary_body": 9,
+      "tech_skill": 8.5,
+      "job_title": 9,
+      "company_line": 8,
+      "bullet": 8.5,
+      "education_title": 8.5,
+      "education_subtitle": 8,
+      "education_detail": 8,
+      "certification": 8
+    }
+  },
+  "colors": {
+    "name": "#1A1A1A",
+    "contact": "#555555",
+    "heading": "#24292F",
+    "job_title": "#1A1A1A",
+    "company": "#888888",
+    "section_border": "#C8C8C8"
+  },
+  "page": {
+    "size": "A4",
+    "margin_top_cm": 1.27,
+    "margin_bottom_cm": 1.27,
+    "margin_left_cm": 1.693,
+    "margin_right_cm": 1.693
+  },
+  "spacing": {
+    "name_after_pt": 3,
+    "contact_after_pt": 1,
+    "languages_after_pt": 4,
+    "heading_before_pt": 10,
+    "heading_after_pt": 3,
+    "summary_after_pt": 2,
+    "tech_after_pt": 1,
+    "job_title_before_pt": 5,
+    "job_title_after_pt": 1,
+    "company_after_pt": 2,
+    "bullet_after_pt": 2,
+    "edu_title_before_pt": 4,
+    "edu_title_after_pt": 1,
+    "edu_sub_after_pt": 1,
+    "cert_after_pt": 1
+  }
+}

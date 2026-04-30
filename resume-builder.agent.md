@@ -61,6 +61,10 @@ Use the `cv-tailoring` skill to produce the CV content.
 ### Step 5: Export to DOCX and PDF
 Use the `cv-export` skill to produce formatted documents.
 - Read the skill instructions from `skills/cv-export/SKILL.md`
+- **Ask the user which template to use** (optional step — default is `classic`):
+  > *"Which CV template would you like? Available templates: **Classic** (default — clean single-column Calibri layout). Press Enter to use the default, or type the template name."*
+  - If the user picks a named template, resolve its path: `skills/cv-export/templates/<name>.json`
+  - If the user skips or chooses "classic", no `--template` flag is needed (built-in defaults match Classic exactly)
 - Convert the CV content to the required JSON structure
 - Save the JSON and run the export scripts, adapting to the environment:
   1. **Detect `uv`**: run `which uv`. If found, use `uv run` — it resolves dependencies automatically from the script's inline metadata, no install step needed.

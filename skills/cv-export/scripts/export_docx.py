@@ -79,6 +79,126 @@ SP_CERT_AFTER = Pt(1)
 
 
 # ---------------------------------------------------------------------------
+# Template support
+# ---------------------------------------------------------------------------
+
+def _hex_to_rgb(hex_color):
+    """Convert '#RRGGBB' hex string to (R, G, B) tuple of ints."""
+    h = hex_color.lstrip("#")
+    return tuple(int(h[i:i+2], 16) for i in (0, 2, 4))
+
+
+def load_template(template_path):
+    """Load a template JSON file and return its data dict."""
+    path = Path(template_path)
+    if not path.exists():
+        print(f"Error: Template file not found: {path}", file=sys.stderr)
+        sys.exit(1)
+    with open(path, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+
+def apply_template(template):
+    """Override module-level formatting constants from a template dict."""
+    global FONT_FAMILY
+    global PAGE_WIDTH_CM, PAGE_HEIGHT_CM
+    global MARGIN_TOP_CM, MARGIN_BOTTOM_CM, MARGIN_LEFT_CM, MARGIN_RIGHT_CM
+    global SIZE_NAME, SIZE_CONTACT, SIZE_SECTION_HEADING, SIZE_SUMMARY_BODY
+    global SIZE_TECH_SKILL, SIZE_JOB_TITLE, SIZE_COMPANY_LINE, SIZE_BULLET
+    global SIZE_EDUCATION_TITLE, SIZE_EDUCATION_SUBTITLE, SIZE_EDUCATION_DETAIL
+    global SIZE_CERT
+    global COLOR_NAME, COLOR_CONTACT, COLOR_HEADING, COLOR_JOB_TITLE
+    global COLOR_COMPANY, COLOR_BLACK
+    global SP_NAME_AFTER, SP_CONTACT_AFTER, SP_LANGUAGES_AFTER
+    global SP_HEADING_BEFORE, SP_HEADING_AFTER, SP_SUMMARY_AFTER, SP_TECH_AFTER
+    global SP_JOB_TITLE_BEFORE, SP_JOB_TITLE_AFTER, SP_COMPANY_AFTER
+    global SP_BULLET_AFTER, SP_EDU_TITLE_BEFORE, SP_EDU_TITLE_AFTER
+    global SP_EDU_SUB_AFTER, SP_CERT_AFTER
+
+    font = template.get("font", {})
+    FONT_FAMILY = font.get("family", FONT_FAMILY)
+    sizes = font.get("sizes", {})
+    if "name" in sizes:
+        SIZE_NAME = Pt(sizes["name"])
+    if "contact" in sizes:
+        SIZE_CONTACT = Pt(sizes["contact"])
+    if "section_heading" in sizes:
+        SIZE_SECTION_HEADING = Pt(sizes["section_heading"])
+    if "summary_body" in sizes:
+        SIZE_SUMMARY_BODY = Pt(sizes["summary_body"])
+    if "tech_skill" in sizes:
+        SIZE_TECH_SKILL = Pt(sizes["tech_skill"])
+    if "job_title" in sizes:
+        SIZE_JOB_TITLE = Pt(sizes["job_title"])
+    if "company_line" in sizes:
+        SIZE_COMPANY_LINE = Pt(sizes["company_line"])
+    if "bullet" in sizes:
+        SIZE_BULLET = Pt(sizes["bullet"])
+    if "education_title" in sizes:
+        SIZE_EDUCATION_TITLE = Pt(sizes["education_title"])
+    if "education_subtitle" in sizes:
+        SIZE_EDUCATION_SUBTITLE = Pt(sizes["education_subtitle"])
+    if "education_detail" in sizes:
+        SIZE_EDUCATION_DETAIL = Pt(sizes["education_detail"])
+    if "certification" in sizes:
+        SIZE_CERT = Pt(sizes["certification"])
+
+    colors = template.get("colors", {})
+    if "name" in colors:
+        COLOR_NAME = RGBColor(*_hex_to_rgb(colors["name"]))
+    if "contact" in colors:
+        COLOR_CONTACT = RGBColor(*_hex_to_rgb(colors["contact"]))
+    if "heading" in colors:
+        COLOR_HEADING = RGBColor(*_hex_to_rgb(colors["heading"]))
+    if "job_title" in colors:
+        COLOR_JOB_TITLE = RGBColor(*_hex_to_rgb(colors["job_title"]))
+    if "company" in colors:
+        COLOR_COMPANY = RGBColor(*_hex_to_rgb(colors["company"]))
+
+    page = template.get("page", {})
+    if "margin_top_cm" in page:
+        MARGIN_TOP_CM = page["margin_top_cm"]
+    if "margin_bottom_cm" in page:
+        MARGIN_BOTTOM_CM = page["margin_bottom_cm"]
+    if "margin_left_cm" in page:
+        MARGIN_LEFT_CM = page["margin_left_cm"]
+    if "margin_right_cm" in page:
+        MARGIN_RIGHT_CM = page["margin_right_cm"]
+
+    spacing = template.get("spacing", {})
+    if "name_after_pt" in spacing:
+        SP_NAME_AFTER = Pt(spacing["name_after_pt"])
+    if "contact_after_pt" in spacing:
+        SP_CONTACT_AFTER = Pt(spacing["contact_after_pt"])
+    if "languages_after_pt" in spacing:
+        SP_LANGUAGES_AFTER = Pt(spacing["languages_after_pt"])
+    if "heading_before_pt" in spacing:
+        SP_HEADING_BEFORE = Pt(spacing["heading_before_pt"])
+    if "heading_after_pt" in spacing:
+        SP_HEADING_AFTER = Pt(spacing["heading_after_pt"])
+    if "summary_after_pt" in spacing:
+        SP_SUMMARY_AFTER = Pt(spacing["summary_after_pt"])
+    if "tech_after_pt" in spacing:
+        SP_TECH_AFTER = Pt(spacing["tech_after_pt"])
+    if "job_title_before_pt" in spacing:
+        SP_JOB_TITLE_BEFORE = Pt(spacing["job_title_before_pt"])
+    if "job_title_after_pt" in spacing:
+        SP_JOB_TITLE_AFTER = Pt(spacing["job_title_after_pt"])
+    if "company_after_pt" in spacing:
+        SP_COMPANY_AFTER = Pt(spacing["company_after_pt"])
+    if "bullet_after_pt" in spacing:
+        SP_BULLET_AFTER = Pt(spacing["bullet_after_pt"])
+    if "edu_title_before_pt" in spacing:
+        SP_EDU_TITLE_BEFORE = Pt(spacing["edu_title_before_pt"])
+    if "edu_title_after_pt" in spacing:
+        SP_EDU_TITLE_AFTER = Pt(spacing["edu_title_after_pt"])
+    if "edu_sub_after_pt" in spacing:
+        SP_EDU_SUB_AFTER = Pt(spacing["edu_sub_after_pt"])
+    if "cert_after_pt" in spacing:
+        SP_CERT_AFTER = Pt(spacing["cert_after_pt"])
+
+
+# ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
 
@@ -401,7 +521,15 @@ def main():
     parser.add_argument("input", help="Path to CV data JSON file")
     parser.add_argument("--output", "-o", default="resume_output.docx",
                         help="Output DOCX filename (default: resume_output.docx)")
+    parser.add_argument("--template", "-t", default=None,
+                        help="Path to a template JSON file (optional). "
+                             "Overrides default formatting constants. "
+                             "Example: skills/cv-export/templates/classic.json")
     args = parser.parse_args()
+
+    if args.template:
+        template_data = load_template(args.template)
+        apply_template(template_data)
 
     input_path = Path(args.input)
     if not input_path.exists():
