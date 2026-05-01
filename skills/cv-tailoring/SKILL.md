@@ -75,7 +75,7 @@ After receiving user answers, write the complete CV in markdown.
 
 **Output language:** Write all CV content — bullets, summary, skills, section headings — in the output language confirmed in Step 3b of the orchestrator (default: English). If English, proceed as normal. If another language:
 - Translate all written content into that language
-- Use the translated section headings from the language table in the active template (or `cv-structure.md` if the template does not include a language table)
+- Use the translated section headings from the language table in the active template. If the template does not include a language table, fall back to `skills/cv-tailoring/references/cv-structure.md`.
 - ATS keywords must be used in their original form as they appear in the (non-English) job description — do not translate them back to English
 - If the job description language and the CV output language differ (e.g., English JD requested in German CV), flag this to the user: ATS keyword matching will be unreliable across languages
 

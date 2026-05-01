@@ -247,6 +247,8 @@ All rules above apply regardless of language. Use translated headings from the t
 | Awards | AWARDS | AUSZEICHNUNGEN |
 | Community & Speaking | COMMUNITY & SPEAKING | EHRENAMT & VORTRÄGE |
 
+To add another language, extend this table with a new column.
+
 ---
 
 ## Sample Output (Fictional Data)
