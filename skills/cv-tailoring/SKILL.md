@@ -12,8 +12,9 @@ Compare a candidate's profile against job requirements, identify gaps, gather mi
 ## Required Inputs
 1. **Structured profile data** — output from the `profile-extraction` skill
 2. **Structured job analysis** — output from the `job-analysis` skill
+3. **CV template** (optional) — a template file from `skills/cv-tailoring/templates/`. Defaults to `classic.md` if not specified.
 
-If either input is missing, ask the user to run the corresponding skill first.
+If either of the first two inputs is missing, ask the user to run the corresponding skill first.
 
 ## Procedure
 
@@ -68,11 +69,13 @@ Additional question rules:
 **STOP here and present the questions to the user. Wait for their answers before proceeding.**
 
 ### Step 3: Write CV Content
-After receiving user answers, write the complete CV in markdown using the structure defined in [cv-structure.md](./references/cv-structure.md).
+After receiving user answers, write the complete CV in markdown.
+
+**Template:** Read the selected template from `skills/cv-tailoring/templates/` (default: `classic.md`). The template defines section order, formatting rules, content quality standards, and provides sample output. Follow the template exactly — it is the authoritative source for structure and style. The template overrides the general guidance below wherever they conflict.
 
 **Output language:** Write all CV content — bullets, summary, skills, section headings — in the output language confirmed in Step 3b of the orchestrator (default: English). If English, proceed as normal. If another language:
 - Translate all written content into that language
-- Use the translated section headings from the language table in [cv-structure.md](./references/cv-structure.md)
+- Use the translated section headings from the language table in the active template (or `cv-structure.md` if the template does not include a language table)
 - ATS keywords must be used in their original form as they appear in the (non-English) job description — do not translate them back to English
 - If the job description language and the CV output language differ (e.g., English JD requested in German CV), flag this to the user: ATS keyword matching will be unreliable across languages
 

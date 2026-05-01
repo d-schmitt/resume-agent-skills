@@ -53,18 +53,18 @@ Review the detected language from the job analysis.
 ### Step 4: Tailor the CV
 Use the `cv-tailoring` skill to produce the CV content.
 - Read the skill instructions from `skills/cv-tailoring/SKILL.md`
+- **Ask the user which CV template to use** before tailoring begins:
+  > *"Which CV template would you like? Available templates in `skills/cv-tailoring/templates/`: **classic** (default — single-column, ATS-friendly, professional). Press Enter to use the default, or type the template name."*
+  - Resolve the template path: `skills/cv-tailoring/templates/<name>.md` (default: `classic.md`)
+  - Read the selected template file and follow its structure, section order, and formatting rules throughout Step 4
 - Perform gap analysis between profile and job requirements
 - **Generate clarifying questions and STOP — wait for user answers**
-- After receiving answers, write all CV sections following the structure in `skills/cv-tailoring/references/cv-structure.md`
+- After receiving answers, write all CV sections following the active template
 - Generate strengthening advice
 
 ### Step 5: Export to DOCX and PDF
 Use the `cv-export` skill to produce formatted documents.
 - Read the skill instructions from `skills/cv-export/SKILL.md`
-- **Ask the user which template to use** (optional step — default is `classic`):
-  > *"Which CV template would you like? Available templates: **Classic** (default — clean single-column Calibri layout). Press Enter to use the default, or type the template name."*
-  - If the user picks a named template, resolve its path: `skills/cv-export/templates/<name>.json`
-  - If the user skips or chooses "classic", no `--template` flag is needed (built-in defaults match Classic exactly)
 - Convert the CV content to the required JSON structure
 - Save the JSON and run the export scripts, adapting to the environment:
   1. **Detect `uv`**: run `which uv`. If found, use `uv run` — it resolves dependencies automatically from the script's inline metadata, no install step needed.
