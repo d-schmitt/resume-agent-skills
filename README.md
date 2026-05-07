@@ -21,7 +21,6 @@ Langdock supports custom agents with instructions, knowledge files, and multi-ag
    - `skills/cv-1-profile-extraction/SKILL.md`
    - `skills/cv-2-job-analysis/SKILL.md`
    - `skills/cv-3-tailoring/SKILL.md`
-   - `skills/cv-3-tailoring/references/cv-structure.md`
    - `skills/cv-4-export/SKILL.md`
    - `skills/cv-4-export/scripts/export_docx.py`
    - `skills/cv-4-export/scripts/export_pdf.py`
@@ -47,7 +46,6 @@ Perplexity doesn't support agent/skill files natively, but you can replicate the
    - `skills/cv-1-profile-extraction/SKILL.md`
    - `skills/cv-2-job-analysis/SKILL.md`
    - `skills/cv-3-tailoring/SKILL.md`
-   - `skills/cv-3-tailoring/references/cv-structure.md`
    - `skills/cv-4-export/SKILL.md`
    - `skills/cv-4-export/scripts/export_docx.py`
    - `skills/cv-4-export/scripts/export_pdf.py`

@@ -55,7 +55,7 @@ Use the `cv-3-tailoring` skill to produce the CV content.
 - Read the skill instructions from `skills/cv-3-tailoring/SKILL.md`
 - Perform gap analysis between profile and job requirements
 - **Generate clarifying questions and STOP — wait for user answers**
-- After receiving answers, write all CV sections following the structure in `skills/cv-3-tailoring/references/cv-structure.md`
+- After receiving answers, write all CV sections following the ## CV Structure Reference defined in `skills/cv-3-tailoring/SKILL.md`
 - Generate strengthening advice
 
 ### Step 5: Export to DOCX and PDF
