@@ -17,14 +17,13 @@ Langdock supports custom agents with instructions, knowledge files, and multi-ag
 1. Go to **Agents** → **Create Agent**
 2. Set name to `Resume Builder` and add a short description
 3. Paste the contents of `resume-builder.agent.md` into the **Instructions** field
-4. Under **Knowledge**, upload all skill files so the agent can read them during the workflow:
+4. Under **Knowledge**, upload all skill files and the layout templates so the agent can read them during the workflow:
    - `skills/cv-1-profile-extraction/SKILL.md`
    - `skills/cv-2-job-analysis/SKILL.md`
    - `skills/cv-3-tailoring/SKILL.md`
    - `skills/cv-4-export/SKILL.md`
-   - `skills/cv-4-export/scripts/export_docx.py`
-   - `skills/cv-4-export/scripts/export_pdf.py`
-   - `examples/sample-output.md`
+   - `templates/standard-ats.pdf` *(visual layout reference — the agent uses this to match fonts, margins, and structure at export time)*
+   - `templates/standard-ats.docx` *(base DOCX template used by the export script)*
 5. Under **Actions → Capabilities**, enable **Data Analysis** (lets the agent run the Python export scripts)
 6. Set **Creativity** slider to low (0.2–0.3) for consistent, professional output
 7. Optionally add **Conversation Starters** like: *"Build a CV from my LinkedIn profile for this job description"*
@@ -49,7 +48,8 @@ Perplexity doesn't support agent/skill files natively, but you can replicate the
    - `skills/cv-4-export/SKILL.md`
    - `skills/cv-4-export/scripts/export_docx.py`
    - `skills/cv-4-export/scripts/export_pdf.py`
-   - `examples/sample-output.md`
+   - `templates/standard-ats.pdf` *(visual layout reference for the export step)*
+   - `templates/standard-ats.docx` *(base DOCX template used by the export script)*
 
 **Step 2: Run the CV workflow**
 1. Start a new Thread in the Space and provide your LinkedIn profile + job description
@@ -61,7 +61,16 @@ Perplexity doesn't support agent/skill files natively, but you can replicate the
    > *"Please export the CV we just built to DOCX and PDF. Use the export scripts from the knowledge files."*
 3. Computer mode will install any required packages automatically and run both export scripts to generate the DOCX and PDF.
 
-## License
+## Template Files
 
-MIT
+The `templates/` folder contains two files used at the export step:
 
+| File | Purpose |
+|---|---|
+| `standard-ats.pdf` | Visual layout reference — the agent loads this to match Calibri font, A4 page size, narrow margins, and single-column section order |
+| `standard-ats.docx` | Base DOCX template — the `export_docx.py` script builds on this so the output inherits the correct styles without needing to reconstruct them from scratch |
+
+**Using the templates with any AI service:**
+- Upload or attach **both files** to your agent, space, or conversation alongside the skill files listed above.
+- The agent instructions reference `templates/standard-ats.pdf` by path. If your platform places uploaded files in a flat working directory (common in sandboxed environments like Langdock Data Analysis or Perplexity Computer mode), the agent will automatically fall back to looking for `standard-ats.pdf` in the current directory — no manual path adjustment needed.
+- If your AI tool does not support file upload (e.g., a plain chat interface), paste the CV content into the conversation and ask the AI to generate DOCX/PDF using Path B (built-in AI generation) described in the agent instructions. The template's layout rules — Calibri 11pt body, bold section headers, reverse-chronological order, 1.5 cm margins — are already encoded in the skill files, so output will still be consistent.
