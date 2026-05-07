@@ -1,5 +1,5 @@
 ---
-name: profile-extraction
+name: cv-1-profile-extraction
 description: "Extract and structure professional profile data from a LinkedIn PDF export, an uploaded CV/resume file (PDF/DOCX), a LinkedIn URL, or pasted profile text. Use when: gathering candidate information, parsing LinkedIn profiles, extracting resume data, normalizing career history."
 argument-hint: "Attach your LinkedIn PDF export or CV file, or provide a LinkedIn URL or pasted text"
 ---
