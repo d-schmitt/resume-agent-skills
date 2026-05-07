@@ -24,6 +24,8 @@ Ask the user to provide **two things**:
 
 If the user has already provided one or both, acknowledge and proceed.
 
+> **Tip for best output:** Load `templates/standard-ats.pdf` as a knowledge file or attachment before starting. This is the visual layout reference used at the export step — having it in context early gives the AI a concrete target to match.
+
 ### Step 2: Extract Profile Data
 Use the `cv-1-profile-extraction` skill to extract and structure the user's professional data.
 - Read the skill instructions from `skills/cv-1-profile-extraction/SKILL.md`
@@ -61,12 +63,15 @@ Use the `cv-3-tailoring` skill to produce the CV content.
 ### Step 5: Export to DOCX and PDF
 Use the `cv-4-export` skill to produce formatted documents.
 - Read the skill instructions from `skills/cv-4-export/SKILL.md`
+- Load `templates/standard-ats.pdf` as visual context — this is the layout reference; your output must match its structure with the user's content
 - Convert the CV content to the required JSON structure
-- Save the JSON and run the export scripts, adapting to the environment:
-  1. **Detect `uv`**: run `which uv`. If found, use `uv run` — it resolves dependencies automatically from the script's inline metadata, no install step needed.
-  2. **No `uv`**: check whether `python-docx` and `reportlab` are importable. If not, run `pip install python-docx reportlab` before proceeding.
-  3. **Script path**: use `skills/cv-4-export/scripts/export_docx.py` if that path exists (local/Copilot/Claude Code). In a sandbox where knowledge files land in the working directory, use `export_docx.py` directly.
-  4. Run both scripts and confirm each exits with code 0 before proceeding.
+- Choose the export path based on environment:
+  - **Path A (Python — exact match):** run the export scripts, adapting to environment:
+    1. **Detect `uv`**: run `which uv`. If found, use `uv run` — it resolves dependencies automatically from the script's inline metadata, no install step needed.
+    2. **No `uv`**: check whether `python-docx` and `reportlab` are importable. If not, run `pip install python-docx reportlab` before proceeding.
+    3. **Script path**: use `skills/cv-4-export/scripts/export_docx.py` if that path exists (local/Copilot/Claude Code). In a sandbox where knowledge files land in the working directory, use `export_docx.py` directly.
+    4. Run both scripts and confirm each exits with code 0 before proceeding.
+  - **Path B (built-in AI generation — when skills/cv-4-export/scripts/export_docx.py is unavailable):** use the validated JSON and the `templates/standard-ats.pdf` visual reference to generate DOCX and PDF directly; the reference defines all layout decisions
 
 ### Step 6: Deliver
 Present the user with:

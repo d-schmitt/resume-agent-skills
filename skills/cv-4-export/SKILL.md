@@ -13,6 +13,29 @@ Convert CV content (markdown) into professionally formatted DOCX and PDF files m
 - **CV content in markdown** — output from the `cv-3-tailoring` skill
 - **Output filename** (optional, defaults to `resume_output`)
 
+## Template Reference
+
+The file `templates/standard-ats.pdf` is the **canonical visual reference** for this export. It shows the exact target layout: section order, typography, spacing, and bullet style.
+
+If this file is available in your context (loaded as a knowledge file or attachment):
+- Treat it as the layout specification
+- Your output must match its visual structure exactly
+- Replace all text in the reference with the user's actual CV content — names, roles, bullets, dates — but preserve every formatting decision (section order, font sizes, column layout, spacing between elements)
+
+The `templates/standard-ats.docx` is the DOCX equivalent and can be used as a style reference for Word-based inspection.
+
+## Export Paths
+
+### Path A — Python Scripts (recommended, exact match)
+Run the existing export scripts. Output is pixel-perfect to the reference.
+Follow Steps 1–6 below.
+
+### Path B — Built-in AI File Generation (when the export_docx.py and export_pdf.pyfiles are not available)
+1. Complete Steps 1–3 below to prepare and validate the JSON
+2. Use the JSON data and the visual reference (`templates/standard-ats.pdf`) to generate the DOCX and PDF directly
+3. The reference PDF defines all layout decisions — your goal is a visual match, not a text match
+4. Deliver the generated files to the user
+
 ## Procedure
 
 ### Step 1: Prepare CV Data
@@ -134,6 +157,6 @@ Requires `python-docx` (DOCX generation) and `reportlab` (PDF generation). No ex
 ## Constraints
 - Output must be **single-column**, ATS-friendly layout
 - Do NOT use tables, text boxes, images, or headers/footers in the DOCX
-- Font: Calibri throughout
-- Page size: A4 with narrow margins
-- The formatting must match the reference document's visual style
+- Font: Calibri throughout (fallback: Helvetica if Calibri is not installed)
+- Page size: A4 with narrow margins (1.27 cm top/bottom, 1.693 cm left/right)
+- The visual output must match `templates/standard-ats.pdf` — use it as the layout reference, not these text rules alone
