@@ -9,7 +9,7 @@ Usage:
   uv run export_docx.py <cv_data.json> [--output <filename.docx>]
   python export_docx.py <cv_data.json> [--output <filename.docx>]
 
-The JSON input schema is defined in skills/cv-export/SKILL.md.
+The JSON input schema is defined in skills/cv-4-export/SKILL.md.
 Formatting matches the Resume_generic.docx reference document.
 """
 

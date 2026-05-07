@@ -1,5 +1,5 @@
 ---
-name: job-analysis
+name: cv-2-job-analysis
 description: "Analyze job descriptions to extract requirements, qualifications, keywords, and themes. Use when: parsing job postings, identifying ATS keywords, understanding role requirements, prioritizing job qualifications."
 argument-hint: "Provide a job description URL or paste the job description text"
 ---
